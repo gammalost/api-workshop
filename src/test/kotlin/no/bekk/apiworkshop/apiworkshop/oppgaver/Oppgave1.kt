@@ -20,8 +20,13 @@ class Oppgave1 {
     @Autowired
     private lateinit var mvc: MockMvc
 
-    @Autowired
-    private lateinit var userController: UserController
+    @Test
+    fun `Returnerer Hello world!`() {
+        val result = mvc.get("/")
+            .andExpect { status { is2xxSuccessful() } }
+            .andReturn().response.contentAsString
+        assert(result == "Hello world!")
+    }
 
     @Test
     fun `Henter alle brukere i databasen`() {

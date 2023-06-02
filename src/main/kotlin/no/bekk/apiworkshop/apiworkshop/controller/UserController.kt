@@ -12,6 +12,9 @@ class UserController(
     private val userService: UserService,
 ) {
 
+    @GetMapping()
+    fun helloWorld() = "Hello world!"
+
     @GetMapping("users")
     fun getUsers() = userService.getUsers()
 

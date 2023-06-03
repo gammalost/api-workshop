@@ -21,13 +21,13 @@ class UserRepository {
         DataClassRowMapper(User::class.java),
     )
 
-    fun getUser(name: String): List<User> {
+    fun getUser(name: String): User? {
         val params = MapSqlParameterSource().addValue("NAME", name)
         return namedParameterJdbcTemplate.query(
             "SELECT * FROM USERS WHERE NAME=:NAME",
             params,
             DataClassRowMapper(User::class.java),
-        )
+        ).firstOrNull()
     }
 }
 

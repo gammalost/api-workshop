@@ -15,35 +15,33 @@ import org.springframework.test.web.servlet.get
     classes = [ApiWorkshopApplication::class],
 )
 @AutoConfigureMockMvc
-class Oppgave1 {
+class Oppgave2 {
     @Autowired
     private lateinit var mvc: MockMvc
 
-    @Test
-    fun `Returnerer Hello world!`() {
-        val result = mvc.get("/")
-            .andExpect { status { is2xxSuccessful() } }
-            .andReturn().response.contentAsString
-        assert(result == "Hello world!")
-    }
+    val sorterteBrukere = listOf(
+        User(id = 0, name = "Emma Andersen", age = 22),
+        User(id = 0, name = "Mia Solberg", age = 25),
+        User(id = 0, name = "Sofie Kristoffersen", age = 28),
+        User(id = 0, name = "Henrik Larsen", age = 31),
+        User(id = 0, name = "Ingrid Johansen", age = 34),
+        User(id = 0, name = "Nora Berg", age = 40),
+        User(id = 0, name = "Olav Olsen", age = 42),
+        User(id = 0, name = "Magnus Eriksen", age = 46),
+        User(id = 0, name = "Lars Nilsen", age = 53),
+        User(id = 0, name = "William Carlsen", age = 56),
+    )
 
     @Test
-    fun `Henter alle brukere i databasen`() {
+    fun `Gir tilbake en sortert liste`() {
         val result = mvc.get("/users")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
                 Json.decodeFromString<List<User>>(it.response.contentAsString)
             }
-        assert(result.size != 10)
-    }
-
-    @Test
-    fun `Hent spesifikk bruker fra database`() {
-        val result = mvc.get("/user?name=Olav Olsen")
-            .andExpect { status { is2xxSuccessful() } }
-            .andReturn().let {
-                Json.decodeFromString<User?>(it.response.contentAsString)
-            }
-        assert(result == null)
+        result.zip(sorterteBrukere).forEach {
+            assert(it.first.age == it.second.age)
+            assert(it.first.name == it.second.name)
+        }
     }
 }

@@ -1,8 +1,6 @@
 package no.bekk.apiworkshop.apiworkshop.oppgaver
 
-import kotlinx.serialization.json.Json
 import no.bekk.apiworkshop.apiworkshop.ApiWorkshopApplication
-import no.bekk.apiworkshop.apiworkshop.repository.User
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -15,17 +13,13 @@ import org.springframework.test.web.servlet.get
     classes = [ApiWorkshopApplication::class],
 )
 @AutoConfigureMockMvc
-class Oppgave3 {
+class Oppgave4 {
     @Autowired
     private lateinit var mvc: MockMvc
 
     @Test
-    fun `Gir tilbake en sortert liste`() {
-        val result = mvc.get("/users")
-            .andExpect { status { is2xxSuccessful() } }
-            .andReturn().let {
-                Json.decodeFromString<List<User>>(it.response.contentAsString)
-            }
-        assert(result == result.sortedBy { it.age })
+    fun `Gi 404 Not Found ved henting av brukere som ikke finnes`() {
+        mvc.get("/user?name=Amalie Strand")
+            .andExpect { status { isNotFound() } }
     }
 }

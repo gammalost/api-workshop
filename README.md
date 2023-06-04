@@ -4,7 +4,7 @@
 
 Noe om arkitekturen og data som finnes i databasen?
 
-## 1. Oppgave 1
+## 1. Oppgave 1 - HTTP-kall
 
 Vi skal nå legge til mulighet for webserveren vår til gi ut informasjon om alle eller spesifikke brukere som er lagret i databasen. 
 For å løse dette må webserveren ha to endepunkt for å hente informasjonen. Din jobb er å lage disse.
@@ -34,26 +34,13 @@ Lag et DELETE-endepunkt for å slette en bruker ved å bruke navn
 
 Eksempel på kall er `/user?name=Ola Nordmann`
 
-## 2. Oppgave 2
-
-I en service legger man forettningslogikk. Forettningslogikken sier noe om hva serveren skal gjøre når 
-den får en forespørsel. Det kan f.eks. være å hente informasjon fra flere databaser og slå sammen resultatene til
-en intern datamodell som klienten kan bruke.
-
-### 2.1 Sorterte brukere
-
-Endre på UserService slik at listen som blir returnert fra serveren blir sortert etter alder.
-
-Hint: Det går å bruke [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html) 
-for å sortere en liste
-
-## 3. Oppgave 3
+## 2. Oppgave 2 - HTTP statuser
 
 HTTP status brukes for å si til klienten om en forespørsel er vellykket eller ikke. Her er et par vanlige eksempler:
 * 200 OK - Forespørselen lyktes
 * 404 Not found - Resursen ble ikke funnet av serveren
 
-### 3.1 201 Created
+### 2.1 201 Created
 
 Endre på post-endepunktet `/user` så at det gir tilbake 201 Created i stedet for 200 OK når man legger til en brukere
 
@@ -62,7 +49,27 @@ Hint: Det går å si at en respon skal ha http status så her:
 return ResponseEntity.created(URI.create("/user")).build()
 ```
 
-### 3.2 Resurs ikke funnet
+## 3. Oppgave 3 - Foretttningslogikk
+
+I en service legger man forettningslogikk. Forettningslogikken sier noe om hva serveren skal gjøre når
+den får en forespørsel. Det kan f.eks. være å hente informasjon fra flere databaser og slå sammen resultatene til
+en intern datamodell som klienten kan bruke.
+
+### 3.1 Sorterte brukere
+
+Endre på UserService slik at listen som blir returnert fra serveren blir sortert etter alder.
+
+Hint: Det går å bruke [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
+for å sortere en liste
+
+## 4. Oppgave 4 - Exceptions
+
+Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksempler:
+* 400 Bad Request - klienten har en ugyldig spørring, f.eks. har man kanskje ikke sendt med alle request params som er påkrevd
+* 404 Not Found - man gjør en spørring mot en URL som ikke finnes
+* 500 Internal Server Error - Noe uventet intreffet
+
+### 4.1 Resurs ikke funnet
 
 Bruk `/user`-endepunktet fra 1.2 og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en brukere som ikke finnes.
@@ -73,4 +80,8 @@ throw ResponseStatusException(HttpStatus.NOT_FOUND)
 ```
 
 Hint:  https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+
+### (valgfri) 4.2 Beskrivelse av feilen
+
+Legg til en bekskrivelse når det kastes en exception
 

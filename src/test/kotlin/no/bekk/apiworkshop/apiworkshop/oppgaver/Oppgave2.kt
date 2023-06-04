@@ -1,14 +1,13 @@
 package no.bekk.apiworkshop.apiworkshop.oppgaver
 
-import kotlinx.serialization.json.Json
 import no.bekk.apiworkshop.apiworkshop.ApiWorkshopApplication
-import no.bekk.apiworkshop.apiworkshop.repository.User
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
+import org.springframework.test.web.servlet.post
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.MOCK,
@@ -20,12 +19,16 @@ class Oppgave2 {
     private lateinit var mvc: MockMvc
 
     @Test
-    fun `Gir tilbake en sortert liste`() {
-        val result = mvc.get("/users")
+    fun `Gi 200 OK ved henting av brukere finnes`() {
+        mvc.get("/user?name=Olav Olsen")
+            .andExpect { status { isOk() } }
+    }
+
+    @Test
+    fun `Gi 201 Created når man lager en ny brukere`() {
+        val name = "Gunde Svan"
+        val age = 42
+        mvc.post("/user?name=$name&age=$age")
             .andExpect { status { is2xxSuccessful() } }
-            .andReturn().let {
-                Json.decodeFromString<List<User>>(it.response.contentAsString)
-            }
-        assert(result == result.sortedBy { it.age })
     }
 }

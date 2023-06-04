@@ -6,33 +6,47 @@ Noe om arkitekturen og data som finnes i databasen?
 
 ## 1. Oppgave 1 - HTTP-kall
 
-Vi skal nå legge til mulighet for webserveren vår til gi ut informasjon om alle eller spesifikke brukere som er lagret i databasen. 
-For å løse dette må webserveren ha to endepunkt for å hente informasjonen. Din jobb er å lage disse.
-Siden vi kun skal hente data så ønsker vi å bruke [Get-kall](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET).
+Det finnes flere forskjellige http-forespørsler med forskjellige funksjoner. 
+Vi skal nå se nærmere på de vanligste og lage noen enkle endepunkt for hver av de.
 
-### 1.1 Alle brukere
+Beskrivelse av de ulike finner du her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
+### 1.1 Hent alle brukere
+
+Vi har laget et database med brukere for denne workshopen. Innholdet i denne finner du i `data.sql`.
+For denne oppgaven skal vi lage et endepunkt som returnerer alle brukerne fra databasen. Siden vi ønsker å hente informasjon så skal vi bruke et [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)-kall.
 
 Lag endepunktet `/users` og hent data fra databasen.
 
-### 1.2 Spesifikk bruker
+### 1.2Hent sSpesifikk bruker
 
-Lag endepunktet `/user` og legg til mulighet for å spesifisere hvilken bruker som skal hentes med bruk av et request parameter `name`.
+Ofte ønsker mulighet for å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
+For å spesifisere dette kan vi bruke path paramet i url-en. 
 
-Eksempel på kall er `/user?name=Ola Nordmann`
+Lag endepunktet `/user` og legg til mulighet for å spesifisere navnet på brukeren vi ønsker returnert med path parameteret `name`.
 
-Hint: https://www.baeldung.com/spring-request-param#a-simple-mapping
+Eksempel på kall: `/user?name=Ola Nordmann`
+
+Hint for hvordan å håndtere path parametre: https://www.baeldung.com/spring-request-param#a-simple-mapping
 
 ### 1.3 Legg til bruker
 
-Lag et nytt `/user`-endpunkt for POST-kall der man kan sende med navn og alder for å lage en ny brukere.
+Det å kun ha mulighet til å hente informasjon er en start, men det blir et lite dynamisk system. 
+For å gjøre det mer brukbart skal du nå gjøre det mulig å legge til brukere.
+For dette skal vi bruke et [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)-kall.
 
-Eksempel på kall er `/user?name=Ola Nordmann&age=20`
+Lag endepunktet `/user` som tar inn `name` og `age` som path parametre som skal brukes til å opprette brukeren.
 
-### (valgfri) 1.4 Slett bruker
+Eksempel på kall: `/user?name=Ola Nordmann&age=20`
 
-Lag et DELETE-endepunkt for å slette en bruker ved å bruke navn
+### 1.4 Slett bruker (valgfri)
 
-Eksempel på kall er `/user?name=Ola Nordmann`
+Det å kunne legge til og hente brukere tar oss et stykke, men vi mangler enda mulighet for å slette en bruker.
+For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE)-kall.
+
+Lag endepunktet `/user` som tar inn navnet på brukeren med path parameteret `name` og slett brukeren.
+
+Eksempel på kall: `/user?name=Ola Nordmann`
 
 ## 2. Oppgave 2 - HTTP statuser
 

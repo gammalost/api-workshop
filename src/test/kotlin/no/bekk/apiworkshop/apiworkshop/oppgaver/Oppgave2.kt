@@ -19,19 +19,6 @@ class Oppgave2 {
     @Autowired
     private lateinit var mvc: MockMvc
 
-    val sorterteBrukere = listOf(
-        User(id = 0, name = "Emma Andersen", age = 22),
-        User(id = 0, name = "Mia Solberg", age = 25),
-        User(id = 0, name = "Sofie Kristoffersen", age = 28),
-        User(id = 0, name = "Henrik Larsen", age = 31),
-        User(id = 0, name = "Ingrid Johansen", age = 34),
-        User(id = 0, name = "Nora Berg", age = 40),
-        User(id = 0, name = "Olav Olsen", age = 42),
-        User(id = 0, name = "Magnus Eriksen", age = 46),
-        User(id = 0, name = "Lars Nilsen", age = 53),
-        User(id = 0, name = "William Carlsen", age = 56),
-    )
-
     @Test
     fun `Gir tilbake en sortert liste`() {
         val result = mvc.get("/users")
@@ -39,9 +26,6 @@ class Oppgave2 {
             .andReturn().let {
                 Json.decodeFromString<List<User>>(it.response.contentAsString)
             }
-        result.zip(sorterteBrukere).forEach {
-            assert(it.first.age == it.second.age)
-            assert(it.first.name == it.second.name)
-        }
+        assert(result == result.sortedBy { it.age })
     }
 }

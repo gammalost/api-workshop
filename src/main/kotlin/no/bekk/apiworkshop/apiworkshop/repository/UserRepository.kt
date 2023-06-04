@@ -29,6 +29,14 @@ class UserRepository {
             DataClassRowMapper(User::class.java),
         ).firstOrNull()
     }
+
+    fun createUser(name: String, age: Int): Int {
+        val params = MapSqlParameterSource().addValue("NAME", name).addValue("AGE", age)
+        return namedParameterJdbcTemplate.update(
+            "INSERT INTO USERS (NAME, AGE) values (:NAME, :AGE)",
+            params,
+        )
+    }
 }
 
 @Serializable

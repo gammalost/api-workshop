@@ -22,6 +22,18 @@ Eksempel på kall er `/user?name=Ola Nordmann`
 
 Hint: https://www.baeldung.com/spring-request-param#a-simple-mapping
 
+### 1.3 Legg til bruker
+
+Lag et nytt `/user`-endpunkt for POST-kall der man kan sende med navn og alder for å lage en ny brukere.
+
+Eksempel på kall er `/user?name=Ola Nordmann&age=20`
+
+### (valgfri) 1.4 Slett bruker
+
+Lag et DELETE-endepunkt for å slette en bruker ved å bruke navn
+
+Eksempel på kall er `/user?name=Ola Nordmann`
+
 ## 2. Oppgave 2
 
 I en service legger man forettningslogikk. Forettningslogikken sier noe om hva serveren skal gjøre når 
@@ -37,11 +49,20 @@ for å sortere en liste
 
 ## 3. Oppgave 3
 
-HTTP statuser brukes for å si til klienten om en forespørsel er vellykket eller ikke. Her er et par vanlige eksempler:
+HTTP status brukes for å si til klienten om en forespørsel er vellykket eller ikke. Her er et par vanlige eksempler:
 * 200 OK - Forespørselen lyktes
 * 404 Not found - Resursen ble ikke funnet av serveren
 
-### 3.1 Resurs ikke funnet
+### 3.1 201 Created
+
+Endre på post-endepunktet `/user` så at det gir tilbake 201 Created i stedet for 200 OK når man legger til en brukere
+
+Hint: Det går å si at en respon skal ha http status så her:
+```
+return ResponseEntity.created(URI.create("/user")).build()
+```
+
+### 3.2 Resurs ikke funnet
 
 Bruk `/user`-endepunktet fra 1.2 og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en brukere som ikke finnes.

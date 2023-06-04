@@ -22,7 +22,7 @@ class UserRepository {
     )
 
     fun getUser(name: String): User? {
-        val params = MapSqlParameterSource().addValue("NAME", name)
+        val params = params("NAME" to name)
         return namedParameterJdbcTemplate.query(
             "SELECT * FROM USERS WHERE NAME=:NAME",
             params,
@@ -31,12 +31,25 @@ class UserRepository {
     }
 
     fun createUser(name: String, age: Int): Int {
-        val params = MapSqlParameterSource().addValue("NAME", name).addValue("AGE", age)
+        val params = params("NAME" to name, "AGE" to age)
         return namedParameterJdbcTemplate.update(
             "INSERT INTO USERS (NAME, AGE) values (:NAME, :AGE)",
             params,
         )
     }
+
+    fun deleteUser(name: String): Int {
+        val params = params("NAME" to name)
+        return namedParameterJdbcTemplate.update(
+            "DELETE FROM USERS WHERE NAME=:NAME",
+            params,
+        )
+    }
+}
+
+private fun params(vararg args: Pair<String, Any>): MapSqlParameterSource {
+    val test = MapSqlParameterSource()
+    return args.forEach { test.addValue(it.first, it.second) }.let { test }
 }
 
 @Serializable

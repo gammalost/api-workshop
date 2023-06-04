@@ -3,6 +3,7 @@ package no.bekk.apiworkshop.apiworkshop.controller
 import no.bekk.apiworkshop.apiworkshop.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -27,4 +28,7 @@ class UserController(
         userService.createUser(name, age)
         return ResponseEntity.status(HttpStatus.CREATED).build()
     }
+
+    @DeleteMapping("/user")
+    fun deleteUser(@RequestParam name: String) = userService.deleteUser(name)
 }

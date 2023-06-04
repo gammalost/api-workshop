@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 
@@ -64,5 +65,17 @@ class Oppgave1 {
         assert(user != null)
         assert(user?.name == name)
         assert(user?.age == age)
+    }
+
+    @Test
+    @DirtiesContext
+    fun `Slett bruker`() {
+        val name = "Emma Andersen"
+        mvc.delete("/user?name=$name")
+            .andExpect { status { is2xxSuccessful() } }
+        val result = mvc.get("/users")
+            .andReturn()
+            .let { Json.decodeFromString<List<User>>(it.response.contentAsString) }
+        assert(result.size == 9)
     }
 }

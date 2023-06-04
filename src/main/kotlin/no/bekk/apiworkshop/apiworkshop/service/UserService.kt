@@ -15,4 +15,5 @@ class UserService(
     fun getUser(name: String): User? = userRepository.getUser(name) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
     fun createUser(name: String, age: Int) = userRepository.createUser(name, age)
+    fun deleteUser(name: String) = userRepository.deleteUser(name)
 }

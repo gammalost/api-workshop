@@ -18,7 +18,7 @@ For denne oppgaven skal vi lage et endepunkt som returnerer alle brukerne fra da
 
 Lag endepunktet `/users` og hent data fra databasen.
 
-### 1.2Hent sSpesifikk bruker
+### 1.2Hent spesifikk bruker
 
 Ofte ønsker mulighet for å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
 For å spesifisere dette kan vi bruke path paramet i url-en. 
@@ -39,7 +39,7 @@ Lag endepunktet `/user` som tar inn `name` og `age` som path parametre som skal 
 
 Eksempel på kall: `/user?name=Ola Nordmann&age=20`
 
-### 1.4 Slett bruker (valgfri)
+### 1.4 Slett bruker (valgfritt)
 
 Det å kunne legge til og hente brukere tar oss et stykke, men vi mangler enda mulighet for å slette en bruker.
 For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE)-kall.

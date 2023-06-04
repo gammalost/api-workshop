@@ -46,7 +46,7 @@ Endre på post-endepunktet `/user` så at det gir tilbake 201 Created i stedet f
 
 Hint: Det går å si at en respon skal ha http status så her:
 ```
-return ResponseEntity.created(URI.create("/user")).build()
+return ResponseEntity.status(HttpStatus.CREATED).build()
 ```
 
 ## 3. Oppgave 3 - Foretttningslogikk

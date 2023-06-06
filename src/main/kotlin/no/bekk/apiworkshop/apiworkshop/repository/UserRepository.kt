@@ -16,7 +16,7 @@ class UserRepository {
     @Autowired
     private lateinit var namedParameterJdbcTemplate: NamedParameterJdbcTemplate
 
-    fun getUsers() = jdbcTemplate.query(
+    fun getUsers(): List<User> = jdbcTemplate.query(
         "SELECT * FROM USERS",
         DataClassRowMapper(User::class.java),
     )

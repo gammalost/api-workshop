@@ -1,8 +1,14 @@
+# API-workshop
+
+Backendtjenester kommer i mange former og fasonger, fra kjernebanksystemer som holder styr på kontoen din til webservere som håndterer forespørsler og returnerer informasjon.
+Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkle API.
 
 
-# api-workshop
+Enkel skisse over arkitekturen til backenden du skal jobbe med:
+![Akritektur](./arkitektur.png)
 
-Noe om arkitekturen og data som finnes i databasen?
+Det er også satt opp en enkel, in memory [H2](https://www.h2database.com/html/main.html)-database.
+For testene er denne denne fyllt med litt innhold. Hva kan du se i denne filen [data.sql](src/test/resources/data.sql).
 
 ## 1. Oppgave 1 - HTTP-kall
 
@@ -50,30 +56,34 @@ Eksempel på kall: `/user?name=Ola Nordmann`
 
 ## 2. Oppgave 2 - HTTP statuser
 
-HTTP status brukes for å si til klienten om en forespørsel er vellykket eller ikke. Her er et par vanlige eksempler:
-* 200 OK - Forespørselen lyktes
-* 404 Not found - Resursen ble ikke funnet av serveren
+Som at det finnes flere forskjellige HTTP-kall så finnes det også forskjellige HTTP-statuser man kan få tilbake. 
+Disse brukes for å si noe om et kall gikk bra eller noe feilet.
+Listen over statuskodene og hva de alle betyr kan du lese mer om her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+Vi skal fokusere på noen av de mer vanlige, som er 2xx, 4xx og 5xx.
 
 ### 2.1 201 Created
 
-Endre på post-endepunktet `/user` så at det gir tilbake 201 Created i stedet for 200 OK når man legger til en brukere
+Endre på POST-endepunktet `/user` så det gir tilbake 201 Created i stedet for 200 OK når man legger til en bruker.
 
-Hint: Det går å si at en respon skal ha http status så her:
+Hint for hvordan å returnere en spesifikk HTTP-status:
 ```
 return ResponseEntity.status(HttpStatus.CREATED).build()
 ```
 
-## 3. Oppgave 3 - Forettningslogikk
+## 3. Oppgave 3 - Forretningslogikk
 
-I en service legger man forettningslogikk. Forettningslogikken sier noe om hva serveren skal gjøre når
-den får en forespørsel. Det kan f.eks. være å hente informasjon fra flere databaser og slå sammen resultatene til
-en intern datamodell som klienten kan bruke.
+Til nå har vi sett på endepunktene til webserveren, men ofte ønsker vi også å gjøre noe mer som et resultat av kallene som kommer inn.
+Dette kan være som vi i tidligere oppgaver har gjort med henting av data fra en database, men det kan også være flere databaser involvert, henting av data fra andre tjenester, sammenstilling av ulik informasjon som skal returneres osv.
+Dette er ofte hva som kalles forretningslogikk og noe som typisk legges inn i en service
 
-### 3.1 Sorterte brukere
+### 3.1 Sortere brukere
 
-Endre på UserService slik at listen som blir returnert fra serveren blir sortert etter alder.
+Et veldig enkelt eksempel på logikk som gjerne legges i en service kan være å sortere data før den returneres.
 
-Hint: Det går å bruke [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
+Her skal du endre på `UserService` slik at listen som blir returnert fra serveren er sortert etter alder.
+
+Hint: Det går å bruke den innebygde listeoperasjonen [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
 for å sortere en liste
 
 ## 4. Oppgave 4 - Exceptions
@@ -85,17 +95,22 @@ Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksem
 
 ### 4.1 Ressurs ikke funnet
 
-Bruk `/user`-endepunktet fra 1.2 og sørg for at endepunktet gir tilbake en respons
-med HTTP status "404 Not found" når man spør etter en brukere som ikke finnes.
+Bruk `/user`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
+med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
 
 Hint: Det går an å kaste en feilmelding med ønsket HTTP status med følgende kode:
 ```
 throw ResponseStatusException(HttpStatus.NOT_FOUND)
 ```
 
-Hint:  https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+Hint: https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
 
 ### 4.2 Beskrivelse av feilen (valgfritt)
 
 Legg til en bekskrivelse når det kastes en exception
 
+## Mulige oppgaver
+
+* POST-kall der de må lage dataklassen for å deserialisere body-en som sendes inn via testen
+* GET-kall der de må lage dataklassen for returtypen
+* Noen enkle oppgaver for å vise bruk av headers

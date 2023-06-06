@@ -20,8 +20,8 @@ Lag endepunktet `/users` og hent data fra databasen.
 
 ### 1.2 Hent en spesifikk bruker
 
-Ofte ønsker mulighet for å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
-For å spesifisere dette kan vi bruke path paramet i url-en. 
+Ofte ønsker vi å ha mulighet til å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
+For å spesifisere dette kan vi bruke path parametre i url-en.
 
 Lag endepunktet `/user` og legg til mulighet for å spesifisere navnet på brukeren vi ønsker returnert med path parameteret `name`.
 

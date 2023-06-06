@@ -18,7 +18,7 @@ For denne oppgaven skal vi lage et endepunkt som returnerer alle brukerne fra da
 
 Lag endepunktet `/users` og hent data fra databasen.
 
-### 1.2Hent spesifikk bruker
+### 1.2 Hent en spesifikk bruker
 
 Ofte ønsker mulighet for å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
 For å spesifisere dette kan vi bruke path paramet i url-en. 
@@ -29,7 +29,7 @@ Eksempel på kall: `/user?name=Ola Nordmann`
 
 Hint for hvordan å håndtere path parametre: https://www.baeldung.com/spring-request-param#a-simple-mapping
 
-### 1.3 Legg til bruker
+### 1.3 Legg til en bruker
 
 Det å kun ha mulighet til å hente informasjon er en start, men det blir et lite dynamisk system. 
 For å gjøre det mer brukbart skal du nå gjøre det mulig å legge til brukere.
@@ -39,7 +39,7 @@ Lag endepunktet `/user` som tar inn `name` og `age` som path parametre som skal 
 
 Eksempel på kall: `/user?name=Ola Nordmann&age=20`
 
-### 1.4 Slett bruker (valgfritt)
+### 1.4 Slett en bruker (valgfritt)
 
 Det å kunne legge til og hente brukere tar oss et stykke, men vi mangler enda mulighet for å slette en bruker.
 For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE)-kall.
@@ -63,7 +63,7 @@ Hint: Det går å si at en respon skal ha http status så her:
 return ResponseEntity.status(HttpStatus.CREATED).build()
 ```
 
-## 3. Oppgave 3 - Foretttningslogikk
+## 3. Oppgave 3 - Forettningslogikk
 
 I en service legger man forettningslogikk. Forettningslogikken sier noe om hva serveren skal gjøre når
 den får en forespørsel. Det kan f.eks. være å hente informasjon fra flere databaser og slå sammen resultatene til
@@ -83,7 +83,7 @@ Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksem
 * 404 Not Found - man gjør en spørring mot en URL som ikke finnes
 * 500 Internal Server Error - Noe uventet intreffet
 
-### 4.1 Resurs ikke funnet
+### 4.1 Ressurs ikke funnet
 
 Bruk `/user`-endepunktet fra 1.2 og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en brukere som ikke finnes.
@@ -95,7 +95,7 @@ throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
 Hint:  https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
 
-### (valgfri) 4.2 Beskrivelse av feilen
+### 4.2 Beskrivelse av feilen (valgfritt)
 
 Legg til en bekskrivelse når det kastes en exception
 

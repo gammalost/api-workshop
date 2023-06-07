@@ -65,6 +65,7 @@ Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte/?skjorte=b
 Eksempel på kall: `/users/?alderFra=30,alderTil=50`
 
 Hint for hvordan å gjøre parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
+
 Hint for filtrering av liste: https://kotlinlang.org/docs/collection-filtering.html
 
 ## 2. Oppgave 2 - HTTP statuser

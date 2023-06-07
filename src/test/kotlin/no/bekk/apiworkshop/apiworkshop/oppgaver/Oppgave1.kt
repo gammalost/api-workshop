@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
+import kotlin.test.assertEquals
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.MOCK,
@@ -27,7 +28,7 @@ class Oppgave1 {
         val result = mvc.get("/hello")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().response.contentAsString
-        assert(result == "Hello world!")
+        assertEquals("Hello world!", result)
     }
 
     @Test
@@ -37,17 +38,18 @@ class Oppgave1 {
             .andReturn().let {
                 Json.decodeFromString<List<User>>(it.response.contentAsString)
             }
-        assert(result.size == 10)
+        assertEquals(10, result.size)
     }
 
     @Test
     fun `Hent spesifikk bruker fra database`() {
-        val result = mvc.get("/user?name=Olav Olsen")
+        val result = mvc.get("/user/1")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
                 Json.decodeFromString<User?>(it.response.contentAsString)
             }
         assert(result != null)
+        assertEquals("Olav Olsen", result?.name)
     }
 
     @Test
@@ -57,14 +59,14 @@ class Oppgave1 {
         val age = 42
         mvc.post("/user?name=$name&age=$age")
             .andExpect { status { is2xxSuccessful() } }
-        val user = mvc.get("/user?name=$name")
+        val user = mvc.get("/user/11")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
                 Json.decodeFromString<User?>(it.response.contentAsString)
             }
         assert(user != null)
-        assert(user?.name == name)
-        assert(user?.age == age)
+        assertEquals(name, user?.name)
+        assertEquals(age, user?.age)
     }
 
     @Test
@@ -76,6 +78,16 @@ class Oppgave1 {
         val result = mvc.get("/users")
             .andReturn()
             .let { Json.decodeFromString<List<User>>(it.response.contentAsString) }
-        assert(result.size == 9)
+        assertEquals(9, result.size)
+    }
+
+    @Test
+    fun `Henter alle brukere i databasen med alder mellom 20 og 40 år`() {
+        val result = mvc.get("/users?alderFra=20&alderTil=40")
+            .andExpect { status { is2xxSuccessful() } }
+            .andReturn().let {
+                Json.decodeFromString<List<User>>(it.response.contentAsString)
+            }
+        assertEquals(6, result.size)
     }
 }

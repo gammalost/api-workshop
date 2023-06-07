@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -18,10 +19,13 @@ class UserController(
     fun helloWorld() = "Hello world!"
 
     @GetMapping("/users")
-    fun getUsers() = userService.getUsers()
+    fun getUsers(
+        @RequestParam alderFra: Int?,
+        @RequestParam alderTil: Int?,
+    ) = userService.getUsers(alderFra, alderTil)
 
-    @GetMapping("/user")
-    fun getUser(@RequestParam name: String) = userService.getUser(name)
+    @GetMapping("/user/{id}")
+    fun getUser(@PathVariable id: String) = userService.getUser(id)
 
     @PostMapping("/user")
     fun createUser(@RequestParam name: String, @RequestParam age: Int): ResponseEntity<String> {

@@ -27,13 +27,13 @@ For denne oppgaven skal vi lage et endepunkt som returnerer alle brukerne fra da
 ### 1.2 Hent en spesifikk bruker
 
 Ofte ønsker vi å ha mulighet til å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
-For å spesifisere dette kan vi bruke path parametre i url-en.
+For å spesifisere dette kan vi bruke en path parameter i url-en, eks. hente vekommende med ansattnummer 1000: `bekk.no/ansatte/1000`
 
-**Oppgave**: Lag endepunktet `/user` og legg til mulighet for å spesifisere navnet på brukeren vi ønsker returnert med path parameteret `name`.
+**Oppgave**: Lag endepunktet `/user` og legg til mulighet for å spesifisere id-en til brukeren vi ønsker returnert med path parameteret `id`.
 
-Eksempel på kall: `/user?name=Ola Nordmann`
+Eksempel på kall: `/user/1`
 
-Hint for hvordan å håndtere path parametre: https://www.baeldung.com/spring-request-param#a-simple-mapping
+Hint for hvordan å håndtere path parametre: https://www.baeldung.com/spring-pathvariable
 
 ### 1.3 Legg til en bruker
 
@@ -53,6 +53,19 @@ For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org
 **Oppgave**: Lag endepunktet `/user` som tar inn navnet på brukeren med path parameteret `name` og slett brukeren.
 
 Eksempel på kall: `/user?name=Ola Nordmann`
+
+### 1.5 Hent brukere filtrert på alder
+
+En generell tanke bak API-er er at de ikke returnerer mer data enn nødvendig.
+For å gjøre dette er det praktisk at vi har mulighet å sende med informasjon å filtrere på.
+Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte/?skjorte=blå`.
+
+**Oppgave**: Utvid endepunktet `/users` til å kunne ta inn `alderFra` og `alderTil` og bruk dette til å filtrere brukere.
+
+Eksempel på kall: `/users/?alderFra=30,alderTil=50`
+
+Hint for hvordan å gjøre parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
+Hint for filtrering av liste: https://kotlinlang.org/docs/collection-filtering.html
 
 ## 2. Oppgave 2 - HTTP statuser
 

@@ -14,7 +14,7 @@ git clone git@github.com:gammalost/api-workshop.git
 ```
 2. Åpne intellij og så åpne repoet du klonet
 
-<img src="./images/intellij_open_project.png" height="400px" /> <img src="images/intellij_choose_repo.png" height=400px />
+<img src="./images/intellij_open_project.png" width="45%" /> <img src="images/intellij_choose_repo.png" width="45%" />
 
 3. Start applikasjonen og gå til `http://localhost:8080/hello` og sjekk at du får `Hello world!` tilbake  
    (Nb: dette kan ta litt tid mens gradle laster ned pakker for å kjøre applikasjonen)
@@ -23,7 +23,7 @@ git clone git@github.com:gammalost/api-workshop.git
 
 4. Sjekk at du får kjørt testene til oppgave 1
 
-<img src="images/intellij_find_task_1.png" /> <img src="images/intellij_run_task_1_tests.png" />
+<img src="images/intellij_find_task_1.png" max-width="45%" /> <img src="images/intellij_run_task_1_tests.png" max-width="45%" />
 
 
 Et voilà! Om alt har gått knirkefritt så skal du nå være klar til å ta fatt på oppgavene! 🚀 Hvis ikke så rop ut, så kommer vi og hjelper! 🏃💨

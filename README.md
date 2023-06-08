@@ -149,8 +149,9 @@ Vi skal fokusere på noen av de mer vanlige, som er 2xx, 4xx og 5xx.
 Hvordan å returnere en spesifikk HTTP-status:
 
 ```
-return ResponseEntity.status(HttpStatus.CREATED).build()
+return ResponseEntity.status(HttpStatus.CREATED).body(id)
 ```
+
 </details>
 
 ## 3. Oppgave 3 - Forretningslogikk

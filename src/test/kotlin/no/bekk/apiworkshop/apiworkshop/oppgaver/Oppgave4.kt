@@ -18,7 +18,7 @@ class Oppgave4 {
     private lateinit var mvc: MockMvc
 
     @Test
-    fun `Gi 404 Not Found ved henting av brukere som ikke finnes`() {
+    fun `Oppgave 4,1 - Gi 404 Not Found ved henting av brukere som ikke finnes`() {
         mvc.get("/user/100")
             .andExpect { status { isNotFound() } }
     }

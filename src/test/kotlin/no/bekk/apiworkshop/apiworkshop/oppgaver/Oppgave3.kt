@@ -20,7 +20,7 @@ class Oppgave3 {
     private lateinit var mvc: MockMvc
 
     @Test
-    fun `Gir tilbake en sortert liste`() {
+    fun `Oppgave 3,1 - Gir tilbake en sortert liste`() {
         val result = mvc.get("/users")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {

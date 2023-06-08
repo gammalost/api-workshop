@@ -27,10 +27,10 @@ class Oppgave2 {
 
     @Test
     @DirtiesContext
-    fun `Gi 201 Created når man lager en ny brukere`() {
+    fun `Oppgave 2,1 - Gi 201 Created når man lager en ny brukere`() {
         val name = "Gunde Svan"
         val age = 42
         mvc.post("/user?name=$name&age=$age")
-            .andExpect { status { is2xxSuccessful() } }
+            .andExpect { status { isCreated() } }
     }
 }

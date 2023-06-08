@@ -63,6 +63,14 @@ For denne oppgaven skal vi lage et endepunkt som returnerer alle brukerne fra da
 
 **Oppgave**: Lag endepunktet `/users` og hent data fra databasen.
 
+<details>
+<summary>Hint 🕵️ 📜</summary>
+
+Gå til http://localhost:8080/users og sjekk hva du får tilbake. 
+I stedet for å lime det inn i nettleseren kan man bruke Postman som er litt diggere.  [Les mer om Postman her](#postman).
+
+</details>
+
 ### 1.2 Hent en spesifikk bruker
 
 Ofte ønsker vi å ha mulighet til å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
@@ -183,3 +191,15 @@ https://www.baeldung.com/spring-response-status-exception#1-generate-responsesta
 * POST-kall der de må lage dataklassen for å deserialisere body-en som sendes inn via testen
 * GET-kall der de må lage dataklassen for returtypen
 * Noen enkle oppgaver for å vise bruk av headers
+
+## Postman
+
+Postman er et verktøy man kan bruke for å lage spørringer mot API:er, her er noen fine ting med Postman:
+
+* Responsen er formattert
+* I nettleseren blir det altid sendt en GET-Request. I Postman er det mulig å sende andre typer requests, f.eks. Post.
+* Man kan lagre spørringer
+* Det er mulig å endre på parametrer i requesten: `body`, `query params`, `http-headers`, osv. 
+
+Postman skal være installert på maskinene deres. Les mer om hvordan man kan få sendt en API-request med Postman i [dokumentasjonen](https://learning.postman.com/docs/getting-started/sending-the-first-request/#sending-an-api-request).
+

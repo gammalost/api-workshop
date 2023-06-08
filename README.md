@@ -3,15 +3,6 @@
 Backendtjenester kommer i mange former og fasonger, fra kjernebanksystemer som holder styr på kontoen din til webservere som håndterer forespørsler og returnerer informasjon.
 Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkle API.
 
-
-## Overordnet om arkitekturen
-
-Enkel skisse over arkitekturen til backenden du skal jobbe med:
-![Arkitektur](./images/arkitektur.png)
-
-Det er også satt opp en enkel, in memory [H2](https://www.h2database.com/html/main.html)-database.
-For testene er denne denne fyllt med litt innhold. Hva kan du se i denne filen [data.sql](src/test/resources/data.sql).
-
 ## Kom i gang
 
 Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 17. 
@@ -46,10 +37,17 @@ Det er satt opp tre filer,
 `UserController` og `UserService` er foreløpig tomme klasser - det er disse du skal legge til funksjonalitet i gjennom oppgavene. 
 For å gjøre det litt lettere er `UserRepository` satt opp på forhånd med de funksjonene du skal trenge for å hente data fra databasen.
 
+Enkel skisse over arkitekturen til backenden du skal jobbe med:
+
+<img src="images/arkitektur.png" width="50% " />
+
 For en liten recap av presentasjonen så er:
 * Controller der vi definerer API-et (eksempel i [UserController](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/controller/UserController.kt) med `helloWorld`-funksjonen)
 * Service der vi legger logikk (eksempel i [UserService](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/service/UserService.kt) med `helloWorld`-funksjonen))
 * Repository der vi jobber mot persistent lagring (les: databaser) 
+
+Databasen som er satt opp er en enkel in memory [H2](https://www.h2database.com/html/main.html)-database.
+For testene er denne denne fyllt med litt innhold. Akkurat hva kan du se i [data.sql](src/test/resources/data.sql).
 
 ## 1. Oppgave 1 - HTTP-kall
 

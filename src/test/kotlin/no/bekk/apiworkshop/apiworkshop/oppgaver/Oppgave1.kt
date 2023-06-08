@@ -32,7 +32,7 @@ class Oppgave1 {
     }
 
     @Test
-    fun `Henter alle brukere i databasen`() {
+    fun `Oppgave 1,1 - Henter alle brukere i databasen`() {
         val result = mvc.get("/users")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
@@ -42,7 +42,7 @@ class Oppgave1 {
     }
 
     @Test
-    fun `Hent spesifikk bruker fra database`() {
+    fun `Oppgave 1,2 - Hent spesifikk bruker fra database`() {
         val result = mvc.get("/user/1")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
@@ -54,7 +54,7 @@ class Oppgave1 {
 
     @Test
     @DirtiesContext
-    fun `Legg til en ny bruker`() {
+    fun `Oppgave 1,3 - Legg til en ny bruker`() {
         val name = "Gunde Svan"
         val age = 42
         mvc.post("/user?name=$name&age=$age")
@@ -71,7 +71,7 @@ class Oppgave1 {
 
     @Test
     @DirtiesContext
-    fun `Slett bruker`() {
+    fun `Oppgave 1,4 - Slett bruker`() {
         val name = "Emma Andersen"
         mvc.delete("/user?name=$name")
             .andExpect { status { is2xxSuccessful() } }
@@ -82,7 +82,7 @@ class Oppgave1 {
     }
 
     @Test
-    fun `Henter alle brukere i databasen med alder mellom 20 og 40 år`() {
+    fun `Oppgave 1,5 - Henter alle brukere i databasen med alder mellom 20 og 40 år`() {
         val result = mvc.get("/users?alderFra=20&alderTil=40")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {

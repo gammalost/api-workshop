@@ -61,7 +61,8 @@ Beskrivelse av de ulike finner du her: https://developer.mozilla.org/en-US/docs/
 Vi har laget et database med brukere for denne workshopen. Innholdet i denne finner du i `data.sql`.
 For denne oppgaven skal vi lage et endepunkt som returnerer alle brukerne fra databasen. Siden vi ønsker å hente informasjon så skal vi bruke et [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)-kall.
 
-**Oppgave**: Lag endepunktet `/users` og hent data fra databasen.
+**Oppgave**: Lag endepunktet `/users` i `UserController.kt` og hent data fra databasen.
+
 
 <details>
 <summary>Hint 🕵️ 📜</summary>
@@ -70,6 +71,8 @@ Gå til http://localhost:8080/users og sjekk hva du får tilbake.
 I stedet for å lime det inn i nettleseren kan man bruke Postman som er litt diggere.  [Les mer om Postman her](#postman).
 
 </details>
+
+🧪 Når du er ferdig, kjør testene i `Oppgave 1` og sjekk at testen `Oppgave 1,1` fungerer
 
 ### 1.2 Hent en spesifikk bruker
 
@@ -82,6 +85,7 @@ Eksempel på kall: `/user/1`
 
 <details>
 <summary>Hint 🕵️ 📜</summary>
+
 Hvordan å håndtere path parametre: https://www.baeldung.com/spring-pathvariable
 </details>
 
@@ -91,9 +95,16 @@ Det å kun ha mulighet til å hente informasjon er en start, men det blir et lit
 For å gjøre det mer brukbart skal du nå gjøre det mulig å legge til brukere.
 For dette skal vi bruke et [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)-kall.
 
-**Oppgave**: Lag endepunktet `/user` som tar inn `name` og `age` som path parametre som skal brukes til å opprette brukeren.
+**Oppgave**: Lag endepunktet `/user` som tar inn `name` og `age` som request parametre som skal brukes til å opprette brukeren.
 
 Eksempel på kall: `/user?name=Ola Nordmann&age=20`
+
+<details>
+<summary>Hint 🕵️ 📜</summary>
+
+Hvordan å håndtere request params: https://www.baeldung.com/spring-request-param
+</details>
+
 
 ### 1.4 Slett en bruker (valgfritt)
 

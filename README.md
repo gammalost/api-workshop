@@ -4,11 +4,38 @@ Backendtjenester kommer i mange former og fasonger, fra kjernebanksystemer som h
 Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkle API.
 
 
+## Overordnet om arkitekturen
+
 Enkel skisse over arkitekturen til backenden du skal jobbe med:
-![Akritektur](./arkitektur.png)
+![Arkitektur](./images/arkitektur.png)
 
 Det er også satt opp en enkel, in memory [H2](https://www.h2database.com/html/main.html)-database.
 For testene er denne denne fyllt med litt innhold. Hva kan du se i denne filen [data.sql](src/test/resources/data.sql).
+
+## Kom i gang
+
+Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 17. 
+Dette skal allerede være installert på maskinene deres, men mulig det for noen må gjøres noe ekstra.
+
+1. Klon repoet. I terminalen kjør denne kommandoen:
+```
+git clone git@github.com:gammalost/api-workshop.git
+```
+2. Åpne intellij og så åpne repoet du klonet
+
+<img src="./images/intellij_open_project.png" height=400px /> <img src="images/intellij_choose_repo.png" height=400px /> 
+
+3. Start applikasjonen og gå til `http://localhost:8080/hello` og sjekk at du får `Hello world!` tilbake  
+   (Nb: dette kan ta litt tid mens gradle laster ned pakker for å kjøre applikasjonen)
+
+<img src="images/intellij_start_application.png" width=300px />
+
+4. Sjekk at du får kjørt testene til oppgave 1
+
+<img src="images/intellij_find_task_1.png" /> <img src="images/intellij_run_task_1_tests.png" />
+
+
+Et voilà! Om alt har gått knirkefritt så skal du nå være klar til å ta fatt på oppgavene! 🚀 Hvis ikke så rop ut, så kommer vi og hjelper! 🏃💨
 
 ## 1. Oppgave 1 - HTTP-kall
 
@@ -33,7 +60,10 @@ For å spesifisere dette kan vi bruke en path parameter i url-en, eks. hente vek
 
 Eksempel på kall: `/user/1`
 
-Hint for hvordan å håndtere path parametre: https://www.baeldung.com/spring-pathvariable
+<details>
+<summary>Hint 🕵️ 📜</summary>
+Hvordan å håndtere path parametre: https://www.baeldung.com/spring-pathvariable
+</details>
 
 ### 1.3 Legg til en bruker
 
@@ -64,9 +94,12 @@ Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte/?skjorte=b
 
 Eksempel på kall: `/users/?alderFra=30,alderTil=50`
 
-Hint for hvordan å gjøre parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
+<details>
+<summary>Hint 🕵️ 📜</summary>
+Hvordan å gjøre parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
 
-Hint for filtrering av liste: https://kotlinlang.org/docs/collection-filtering.html
+Hvordan filtrere en liste: https://kotlinlang.org/docs/collection-filtering.html
+</details>
 
 ## 2. Oppgave 2 - HTTP statuser
 
@@ -80,10 +113,14 @@ Vi skal fokusere på noen av de mer vanlige, som er 2xx, 4xx og 5xx.
 
 **Oppgave**: Endre på POST-endepunktet `/user` så det gir tilbake 201 Created i stedet for 200 OK når man legger til en bruker.
 
-Hint for hvordan å returnere en spesifikk HTTP-status:
+<details>
+<summary>Hint 🕵️ 📜</summary>
+Hvordan å returnere en spesifikk HTTP-status:
+
 ```
 return ResponseEntity.status(HttpStatus.CREATED).build()
 ```
+</details>
 
 ## 3. Oppgave 3 - Forretningslogikk
 
@@ -97,8 +134,11 @@ Et veldig enkelt eksempel på logikk som gjerne legges i en service kan være å
 
 **Oppgave**: Her skal du endre på `UserService` slik at listen som blir returnert fra serveren er sortert etter alder.
 
-Hint: Det går å bruke den innebygde listeoperasjonen [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
+<details>
+<summary>Hint 🕵️ 📜</summary>
+Hvordan å bruke den innebygde listeoperasjonen [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
 for å sortere en liste
+</details>
 
 ## 4. Oppgave 4 - Exceptions
 
@@ -112,12 +152,15 @@ Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksem
 **Oppgave**: Bruk `/user`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
 
-Hint: Det går an å kaste en feilmelding med ønsket HTTP status med følgende kode:
+<details><summary>Hint 🕵️ 📜</summary>
+Det går an å kaste en feilmelding med ønsket HTTP status med følgende kode:
+
 ```
 throw ResponseStatusException(HttpStatus.NOT_FOUND)
 ```
 
-Hint: https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+</details>
 
 ### 4.2 Beskrivelse av feilen (valgfritt)
 

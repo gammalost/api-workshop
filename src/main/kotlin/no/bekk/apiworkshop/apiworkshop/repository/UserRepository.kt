@@ -27,7 +27,7 @@ class UserRepository {
             "SELECT * FROM USERS WHERE ID=:ID",
             params,
             DataClassRowMapper(User::class.java),
-        ).single()
+        ).firstOrNull()
     }
 
     fun createUser(name: String, age: Int): Int {

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
@@ -20,11 +21,12 @@ class Oppgave2 {
 
     @Test
     fun `Gi 200 OK ved henting av brukere finnes`() {
-        mvc.get("/user?name=Olav Olsen")
+        mvc.get("/user/1")
             .andExpect { status { isOk() } }
     }
 
     @Test
+    @DirtiesContext
     fun `Gi 201 Created når man lager en ny brukere`() {
         val name = "Gunde Svan"
         val age = 42

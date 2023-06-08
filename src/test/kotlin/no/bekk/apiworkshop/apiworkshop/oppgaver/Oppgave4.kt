@@ -19,7 +19,7 @@ class Oppgave4 {
 
     @Test
     fun `Gi 404 Not Found ved henting av brukere som ikke finnes`() {
-        mvc.get("/user?name=Amalie Strand")
+        mvc.get("/user/100")
             .andExpect { status { isNotFound() } }
     }
 }

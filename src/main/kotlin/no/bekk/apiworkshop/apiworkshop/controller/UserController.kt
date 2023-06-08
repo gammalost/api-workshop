@@ -2,6 +2,7 @@ package no.bekk.apiworkshop.apiworkshop.controller
 
 import no.bekk.apiworkshop.apiworkshop.service.UserService
 import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -25,7 +26,7 @@ class UserController(
     ) = userService.getUsers(alderFra, alderTil)
 
     @GetMapping("/user/{id}")
-    fun getUser(@PathVariable id: String) = userService.getUser(id)
+    fun getUser(@PathVariable id: String) = userService.getUser(id) ?: ResponseEntity.status(HttpStatus.NOT_FOUND)
 
     @PostMapping("/user")
     fun createUser(@RequestParam name: String, @RequestParam age: Int): ResponseEntity<String> {

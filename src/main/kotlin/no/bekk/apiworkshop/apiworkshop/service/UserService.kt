@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException
 class UserService(
     private val userRepository: UserRepository,
 ) {
+    fun helloWorld() = "Hello world!"
     fun getUsers(alderFra: Int?, alderTil: Int?) = userRepository.getUsers()
         .sortedBy { it.age }
         .filter { it.age in ((alderFra ?: 0)..(alderTil ?: Int.MAX_VALUE)) }

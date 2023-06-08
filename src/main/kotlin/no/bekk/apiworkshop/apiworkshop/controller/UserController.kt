@@ -16,7 +16,7 @@ class UserController(
 ) {
 
     @GetMapping("/hello")
-    fun helloWorld() = "Hello world!"
+    fun helloWorld() = userService.helloWorld()
 
     @GetMapping("/users")
     fun getUsers(

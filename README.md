@@ -23,7 +23,7 @@ git clone git@github.com:gammalost/api-workshop.git
 ```
 2. Åpne intellij og så åpne repoet du klonet
 
-<img src="./images/intellij_open_project.png" height=400px /> <img src="images/intellij_choose_repo.png" height=400px /> 
+<img src="./images/intellij_open_project.png" height="400px" /> <img src="images/intellij_choose_repo.png" height=400px />
 
 3. Start applikasjonen og gå til `http://localhost:8080/hello` og sjekk at du får `Hello world!` tilbake  
    (Nb: dette kan ta litt tid mens gradle laster ned pakker for å kjøre applikasjonen)
@@ -36,6 +36,20 @@ git clone git@github.com:gammalost/api-workshop.git
 
 
 Et voilà! Om alt har gått knirkefritt så skal du nå være klar til å ta fatt på oppgavene! 🚀 Hvis ikke så rop ut, så kommer vi og hjelper! 🏃💨
+
+## Okey... hva nå?
+
+Det er satt opp tre filer, 
+[UserController](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/controller/UserController.kt), 
+[UserService](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/service/UserService.kt) og 
+[UserRepository](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/repository/UserRepository.kt). 
+`UserController` og `UserService` er foreløpig tomme klasser - det er disse du skal legge til funksjonalitet i gjennom oppgavene. 
+For å gjøre det litt lettere er `UserRepository` satt opp på forhånd med de funksjonene du skal trenge for å hente data fra databasen.
+
+For en liten recap av presentasjonen så er:
+* Controller der vi definerer API-et (eksempel i [UserController](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/controller/UserController.kt) med `helloWorld`-funksjonen)
+* Service der vi legger logikk (eksempel i [UserService](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/service/UserService.kt) med `helloWorld`-funksjonen))
+* Repository der vi jobber mot persistent lagring (les: databaser) 
 
 ## 1. Oppgave 1 - HTTP-kall
 

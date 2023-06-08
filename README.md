@@ -98,7 +98,7 @@ For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org
 
 Eksempel på kall: `/user?name=Ola Nordmann`
 
-### 1.5 Hent brukere filtrert på alder
+### 1.5 Hent brukere filtrert på alder (valgfritt)
 
 En generell tanke bak API-er er at de ikke returnerer mer data enn nødvendig.
 For å gjøre dette er det praktisk at vi har mulighet å sende med informasjon å filtrere på.

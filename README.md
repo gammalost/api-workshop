@@ -17,7 +17,9 @@ git clone git@github.com:gammalost/api-workshop.git
 <img src="./images/intellij_open_project.png" width="45%" /> <img src="images/intellij_choose_repo.png" width="45%" />
 
 3. Start applikasjonen og gå til `http://localhost:8080/hello` og sjekk at du får `Hello world!` tilbake  
-   (Nb: dette kan ta litt tid mens gradle laster ned pakker for å kjøre applikasjonen)
+   (Nb: dette kan ta litt tid mens gradle laster ned pakker for å kjøre applikasjonen). 
+   Hvis `ApiWorkshopApplication ` ikke vises kan du åpne filen `ApiWorkshopApplication.kt` 
+   og klikke på play-knappen til venstre for `fun main`.
 
 <img src="images/intellij_start_application.png" width=300px />
 

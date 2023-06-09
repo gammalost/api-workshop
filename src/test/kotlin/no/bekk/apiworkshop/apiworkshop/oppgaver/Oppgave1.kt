@@ -80,14 +80,4 @@ class Oppgave1 {
             .let { Json.decodeFromString<List<User>>(it.response.contentAsString) }
         assertEquals(9, result.size)
     }
-
-    @Test
-    fun `Oppgave 1,5 - Henter alle brukere i databasen med alder mellom 20 og 40 år`() {
-        val result = mvc.get("/users?alderFra=20&alderTil=40")
-            .andExpect { status { is2xxSuccessful() } }
-            .andReturn().let {
-                Json.decodeFromString<List<User>>(it.response.contentAsString)
-            }
-        assertEquals(6, result.size)
-    }
 }

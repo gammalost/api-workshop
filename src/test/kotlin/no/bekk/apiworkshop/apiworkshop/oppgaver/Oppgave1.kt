@@ -68,16 +68,4 @@ class Oppgave1 {
         assertEquals(name, user?.name)
         assertEquals(age, user?.age)
     }
-
-    @Test
-    @DirtiesContext
-    fun `Oppgave 1,4 - Slett bruker`() {
-        val name = "Emma Andersen"
-        mvc.delete("/user?name=$name")
-            .andExpect { status { is2xxSuccessful() } }
-        val result = mvc.get("/users")
-            .andReturn()
-            .let { Json.decodeFromString<List<User>>(it.response.contentAsString) }
-        assertEquals(9, result.size)
-    }
 }

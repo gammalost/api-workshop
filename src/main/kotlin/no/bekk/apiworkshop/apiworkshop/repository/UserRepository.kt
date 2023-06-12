@@ -58,3 +58,11 @@ data class User(
     val name: String,
     val age: Int,
 )
+
+@Serializable
+data class UserDetailed(
+    val id: Int,
+    val name: String,
+    val age: Int,
+    val email: String,
+)

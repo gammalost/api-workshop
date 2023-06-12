@@ -13,3 +13,21 @@ Eksempel på kall: `/user?name=Ola Nordmann`
 ## 2 - Beskrivelse av feilen
 
 **Oppgave**: Legg til en bekskrivelse når det kastes en exception
+
+## 3 - Returner nytt objekt med epost
+
+Det er ofte vi ønsker å ha en egen returtype, separert fra den interne datastrukturen i applikasjonen vår.
+I denne oppgaven skal vi lage en egen dataklasse som vi skal returnere til klienten.
+
+**Oppgave**: Lag endepunktet `/usersDetailed` som returnerer det samme som `User`-klassen, men i tillegg et epost-felt som skal være på formen `Fornavn.Etternavn@bekk.no`.
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Espen Askeladd",
+    "age": 20,
+    "email": "Espen.Askeladd@bekk.no"
+  }
+]
+```

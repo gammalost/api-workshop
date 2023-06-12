@@ -1,6 +1,10 @@
 package no.bekk.apiworkshop.apiworkshop.oppgaver
 
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 import no.bekk.apiworkshop.apiworkshop.ApiWorkshopApplication
 import no.bekk.apiworkshop.apiworkshop.repository.User
 import org.junit.jupiter.api.Test
@@ -32,5 +36,34 @@ class Oppgave5 {
             .andReturn()
             .let { Json.decodeFromString<List<User>>(it.response.contentAsString) }
         assertEquals(9, result.size)
+    }
+
+    @Test
+    fun `Oppgave 5,3 - Returner nytt objekt med epost`() {
+        val brukere = mvc.get("/users").andReturn().response.contentAsString
+
+        /* Noe keitete å sjekke om en spesifikk type er returnert når
+         * den ikke er laget og kan brukes til deserialisering.
+         * Ble en liten 360 no-scope på å lage strukturen selv og
+         * sjekke to json-strukturer. Don't do this as home, kids 😅
+         */
+        val array = (Json.parseToJsonElement(brukere) as JsonArray).map { objekt ->
+            buildJsonObject {
+                put("id", (objekt as JsonObject)["id"].toString().toInt())
+                put("name", (objekt as JsonObject)["name"].toString().replace("\"", ""))
+                put("age", (objekt as JsonObject)["age"].toString().toInt())
+                put("email", (objekt as JsonObject)["name"].toString().replace(" ", ".").replace("\"", "") + "@bekk.no")
+            }
+        }
+
+        val brukereDetaljert = (
+            Json.parseToJsonElement(
+                mvc.get("/usersDetailed")
+                    .andExpect { status { is2xxSuccessful() } }
+                    .andReturn().response.contentAsString,
+            ) as JsonArray
+            )
+
+        assert(JsonArray(array).containsAll(brukereDetaljert))
     }
 }

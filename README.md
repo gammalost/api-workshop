@@ -60,8 +60,8 @@ Under er en liste over oppgavene med tilhørende tema
 
 * [Oppgave 1 - HTTP-kall](oppgaver/oppgave1.md)
 * [Oppgave 2 - HTTP-statuer](oppgaver/oppgave2.md)
-* [Oppgave 3 - Forretningslogikk](oppgaver/oppgave3.md)
-* [Oppgave 4 - Exceptions](oppgaver/oppgave4.md)
+* [Oppgave 3 - Exceptions](oppgaver/oppgave3.md)
+* [Oppgave 4 - Forretningslogikk](oppgaver/oppgave4.md)
 * [Oppgave 5 - Videre](oppgaver/oppgave5.md)
 
 

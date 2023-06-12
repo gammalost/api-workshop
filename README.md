@@ -6,7 +6,7 @@ Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkl
 ## Kom i gang
 
 Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 17. 
-Dette skal allerede være installert på maskinene deres, men mulig det for noen må gjøres noe ekstra.
+Dette skal allerede være installert på maskinene deres, men mulig det for noe ekstra for noen (si fra!).
 
 1. Klon repoet. I terminalen kjør denne kommandoen:
 ```
@@ -23,7 +23,7 @@ git clone git@github.com:gammalost/api-workshop.git
 
 <img src="images/intellij_start_application.png" width=300px />
 
-4. Sjekk at du får kjørt testene til oppgave 1
+4. Sjekk at du får kjørt testene til oppgave 1 (høyreklikk på filen og så kjør den)
 
 <img src="images/intellij_find_task_1.png" max-width="45%" /> <img src="images/intellij_run_task_1_tests.png" max-width="45%" />
 

@@ -21,7 +21,3 @@ throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
 https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
 </details>
-
-## 2 - Beskrivelse av feilen (valgfritt)
-
-**Oppgave**: Legg til en bekskrivelse når det kastes en exception

@@ -9,3 +9,7 @@ For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org
 **Oppgave**: Lag endepunktet `/user` som tar inn navnet på brukeren med path parameteret `name` og slett brukeren.
 
 Eksempel på kall: `/user?name=Ola Nordmann`
+
+## 2 - Beskrivelse av feilen
+
+**Oppgave**: Legg til en bekskrivelse når det kastes en exception

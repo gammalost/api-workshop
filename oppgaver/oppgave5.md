@@ -21,6 +21,7 @@ I denne oppgaven skal vi lage en egen dataklasse som vi skal returnere til klien
 
 **Oppgave**: Lag endepunktet `/usersDetailed` som returnerer det samme som `User`-klassen, men i tillegg et epost-felt som skal være på formen `Fornavn.Etternavn@bekk.no`.
 
+Eksempel på returnert objekt:
 ```json
 [
   {

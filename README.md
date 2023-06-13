@@ -65,12 +65,6 @@ Under er en liste over oppgavene med tilhørende tema
 * [Oppgave 5 - Videre](oppgaver/oppgave5.md)
 
 
-## Mulige oppgaver
-
-* POST-kall der de må lage dataklassen for å deserialisere body-en som sendes inn via testen
-* GET-kall der de må lage dataklassen for returtypen
-* Noen enkle oppgaver for å vise bruk av headers
-
 ## Postman
 
 Postman er et verktøy man kan bruke for å lage spørringer mot API:er, her er noen fine ting med Postman:

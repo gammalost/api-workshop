@@ -11,10 +11,12 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.get
+import org.springframework.test.web.servlet.post
 import kotlin.test.assertEquals
 
 @SpringBootTest(
@@ -39,7 +41,7 @@ class Oppgave5 {
     }
 
     @Test
-    fun `Oppgave 5,3 - Returner nytt objekt med epost`() {
+    fun `Oppgave 5,2 - Returner nytt objekt med epost`() {
         val brukere = mvc.get("/users").andReturn().response.contentAsString
 
         /* Noe keitete å sjekke om en spesifikk type er returnert når
@@ -65,5 +67,17 @@ class Oppgave5 {
             )
 
         assert(JsonArray(array).containsAll(brukereDetaljert))
+    }
+
+    @Test
+    @DirtiesContext
+    fun `Oppgave 5,3 - Post med body`() {
+        val name = "Emma Andersen"
+        val age = 23
+        mvc.post("/postUser") {
+            content = """{"name":"$name","age":$age}"""
+            contentType = MediaType.APPLICATION_JSON
+        }
+            .andExpect { status { is2xxSuccessful() } }
     }
 }

@@ -10,11 +10,9 @@ For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org
 
 Eksempel på kall: `/user?name=Ola Nordmann`
 
-## 2 - Beskrivelse av feilen
 
-**Oppgave**: Legg til en bekskrivelse når det kastes en exception
 
-## 3 - Returner nytt objekt med epost
+## 2 - Returner nytt objekt med epost
 
 Det er ofte vi ønsker å ha en egen returtype, separert fra den interne datastrukturen i applikasjonen vår.
 I denne oppgaven skal vi lage en egen dataklasse som vi skal returnere til klienten.
@@ -32,3 +30,13 @@ Eksempel på returnert objekt:
   }
 ]
 ```
+
+## 3 - Bruk body ved post i stedet for query params
+
+**Oppgave**: I oppgave 1.3 så lagde dere POST-endepunktet `/user` som tar inn `name` og `age` som request parametre.
+Vanligvis sender man med en request body i POST-spørringer i stedet for request params. Lag et endepunkt `/postUser` 
+som tar inn en dataklasse som innholder feltene `name` og `age` som request body.
+
+## 4 - Beskrivelse av feilen
+
+**Oppgave**: Legg til en bekskrivelse når det kastes en exception

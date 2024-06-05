@@ -21,11 +21,11 @@ for å sortere en liste
 
 En generell tanke bak API-er er at de ikke returnerer mer data enn nødvendig.
 For å gjøre dette er det praktisk at vi har mulighet å sende med informasjon å filtrere på.
-Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte/?skjorte=blå`.
+Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte?skjorte=blå`.
 
 **Oppgave**: Utvid endepunktet `/users` til å kunne ta inn `alderFra` og `alderTil` og bruk dette til å filtrere brukere.
 
-Eksempel på kall: `/users/?alderFra=30,alderTil=50`
+Eksempel på kall: `/users?alderFra=30,alderTil=50`
 
 <details>
 <summary>Hint 🕵️ 📜</summary>

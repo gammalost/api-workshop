@@ -13,8 +13,8 @@ Et veldig enkelt eksempel på logikk som gjerne legges i en service kan være å
 <details>
 <summary>Hint 🕵️ 📜</summary>
 
-Hvordan å bruke den innebygde listeoperasjonen [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
-for å sortere en liste
+Bruk [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
+for å sortere en liste.
 </details>
 
 ## 2 - Hent brukere filtrert på alder

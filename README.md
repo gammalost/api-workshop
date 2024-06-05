@@ -5,8 +5,8 @@ Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkl
 
 ## Kom i gang
 
-Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 17. 
-Dette skal allerede være installert på maskinene deres, men mulig det for noe ekstra for noen (si fra!).
+Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 21. 
+Dette skal allerede være installert på maskinene deres, men mulig det trengs noe ekstra for noen (si fra!).
 
 1. Klon repoet. I terminalen kjør denne kommandoen:
 ```
@@ -17,7 +17,7 @@ git clone git@github.com:gammalost/api-workshop.git
 <img src="./images/intellij_open_project.png" width="45%" /> <img src="images/intellij_choose_repo.png" width="45%" />
 
 3. Start applikasjonen og gå til `http://localhost:8080/hello` og sjekk at du får `Hello world!` tilbake  
-   (Nb: dette kan ta litt tid mens gradle laster ned pakker for å kjøre applikasjonen). 
+   (Nb: det kan ta litt tid for gradle å laste ned pakker som trengs for å kjøre applikasjonen). 
    Hvis `ApiWorkshopApplication ` ikke vises kan du åpne filen `ApiWorkshopApplication.kt` 
    og klikke på play-knappen til venstre for `fun main`.
 
@@ -53,7 +53,7 @@ For en liten recap av presentasjonen så er:
 * Repository der vi jobber mot persistent lagring (les: databaser) 
 
 Databasen som er satt opp er en enkel in memory [H2](https://www.h2database.com/html/main.html)-database.
-For testene er denne denne fyllt med litt innhold. Akkurat hva kan du se i [data.sql](src/test/resources/data.sql).
+For testene er denne denne fyllt med litt innhold. Akkurat hva kan du se i [data.sql](src/main/resources/data.sql).
 
 ## Oppgaver
 Under er en liste over oppgavene med tilhørende tema 
@@ -63,16 +63,4 @@ Under er en liste over oppgavene med tilhørende tema
 * [Oppgave 3 - Exceptions](oppgaver/oppgave3.md)
 * [Oppgave 4 - Forretningslogikk](oppgaver/oppgave4.md)
 * [Oppgave 5 - Videre](oppgaver/oppgave5.md)
-
-
-## Postman
-
-Postman er et verktøy man kan bruke for å lage spørringer mot API:er, her er noen fine ting med Postman:
-
-* Responsen er formattert
-* I nettleseren blir det altid sendt en GET-Request. I Postman er det mulig å sende andre typer requests, f.eks. Post.
-* Man kan lagre spørringer
-* Det er mulig å endre på parametrer i requesten: `body`, `query params`, `http-headers`, osv. 
-
-Postman skal være installert på maskinene deres. Les mer om hvordan man kan få sendt en API-request med Postman i [dokumentasjonen](https://learning.postman.com/docs/getting-started/sending-the-first-request/#sending-an-api-request).
 

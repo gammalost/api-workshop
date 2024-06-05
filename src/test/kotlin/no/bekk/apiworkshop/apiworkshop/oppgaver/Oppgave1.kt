@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.delete
@@ -43,7 +44,7 @@ class Oppgave1 {
 
     @Test
     fun `Oppgave 1,2 - Hent spesifikk bruker fra database`() {
-        val result = mvc.get("/user/1")
+        val result = mvc.get("/users/1")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
                 Json.decodeFromString<User?>(it.response.contentAsString)
@@ -57,9 +58,12 @@ class Oppgave1 {
     fun `Oppgave 1,3 - Legg til en ny bruker`() {
         val name = "Gunde Svan"
         val age = 42
-        mvc.post("/user?name=$name&age=$age")
+        mvc.post("/users") {
+            content = """{"name":"$name","age":$age}"""
+            contentType = MediaType.APPLICATION_JSON
+        }
             .andExpect { status { is2xxSuccessful() } }
-        val user = mvc.get("/user/11")
+        val user = mvc.get("/users/11")
             .andExpect { status { is2xxSuccessful() } }
             .andReturn().let {
                 Json.decodeFromString<User?>(it.response.contentAsString)

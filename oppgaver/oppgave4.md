@@ -25,12 +25,12 @@ Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte?skjorte=bl
 
 **Oppgave**: Utvid endepunktet `/users` til å kunne ta inn `alderFra` og `alderTil` og bruk dette til å filtrere brukere.
 
-Eksempel på kall: `/users?alderFra=30,alderTil=50`
+Eksempel på kall: `/users?alderFra=30&alderTil=50`
 
 <details>
 <summary>Hint 🕵️ 📜</summary>
 
-Hvordan å gjøre parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
+Hvordan å gjøre query parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
 
-Hvordan filtrere en liste: https://kotlinlang.org/docs/collection-filtering.html
+Eksempler på hvordan å filtrere en liste: https://kotlinlang.org/docs/collection-filtering.html
 </details>

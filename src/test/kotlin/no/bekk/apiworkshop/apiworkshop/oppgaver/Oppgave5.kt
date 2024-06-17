@@ -32,7 +32,7 @@ class Oppgave5 {
     @DirtiesContext
     fun `Oppgave 5,1 - Slett bruker`() {
         val name = "Emma Andersen"
-        mvc.delete("/users?name=$name")
+        mvc.delete("/users/1")
             .andExpect { status { is2xxSuccessful() } }
         val result = mvc.get("/users")
             .andReturn()

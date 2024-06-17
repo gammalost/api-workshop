@@ -25,11 +25,11 @@ return ResponseEntity.status(HttpStatus.CREATED).body(id)
 
 
 ## 2 - 404 Not found
+Hvis klienten gjør noe feil er det greit å si fra om hva som er feil. Til dette har vi 4xx-kodene.
+Noen mye brukte koder er:
 
-Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksempler:
 * 400 Bad Request - klienten har en ugyldig spørring, f.eks. har man kanskje ikke sendt med alle request params som er påkrevd
 * 404 Not Found - man gjør en spørring mot en URL som ikke finnes
-* 500 Internal Server Error - Noe feilet på server-siden
 
 **Oppgave**: Bruk `/user`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
@@ -47,6 +47,7 @@ https://www.baeldung.com/spring-response-status-exception#1-generate-responsesta
 </details>
 
 ## 3 - 500 Internal server error
+Det kan også være at noe feiler med prosesseringen av requesten på serveren. Til dette har vi 5xx-kodene.
 
 **Oppgave**: Lag endepunktet `/divide1000by/{tall}` som tar inn et tall og returnerer 1000 delt på tallet. Tving frem en exception du må håndtere ved å sende inn 0!
 

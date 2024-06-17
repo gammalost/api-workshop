@@ -21,7 +21,7 @@ class Oppgave2 {
 
     @Test
     fun `Gi 200 OK ved henting av brukere finnes`() {
-        mvc.get("/user/1")
+        mvc.get("/users/1")
             .andExpect { status { isOk() } }
     }
 
@@ -30,7 +30,7 @@ class Oppgave2 {
     fun `Oppgave 2,1 - Gi 201 Created når man lager en ny brukere`() {
         val name = "Gunde Svan"
         val age = 42
-        mvc.post("/user?name=$name&age=$age")
+        mvc.post("/users?name=$name&age=$age")
             .andExpect { status { isCreated() } }
     }
 }

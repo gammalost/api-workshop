@@ -7,7 +7,7 @@ Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksem
 
 ## 1 - Ressurs ikke funnet
 
-**Oppgave**: Bruk `/user`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
+**Oppgave**: Bruk `/users`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
 
 <details>

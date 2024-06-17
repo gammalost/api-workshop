@@ -24,7 +24,7 @@ return ResponseEntity.status(HttpStatus.CREATED).body(id)
 🧪 Når du er ferdig, kjør testene i `Oppgave2` og sjekk at testen `Oppgave 2,1` fungerer.
 
 
-## 2 - 404 Ressurs ikke funnet
+## 2 - 404 Not found
 
 Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksempler:
 * 400 Bad Request - klienten har en ugyldig spørring, f.eks. har man kanskje ikke sendt med alle request params som er påkrevd
@@ -37,11 +37,27 @@ med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
 <details>
 <summary>Hint 🕵️ 📜</summary>
 
-Det går an å kaste en feilmelding med ønsket HTTP status med følgende kode:
+Det går an å kaste en exception med ønsket HTTP status med følgende kode:
 
 ```
 throw ResponseStatusException(HttpStatus.NOT_FOUND)
 ```
 
 https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+</details>
+
+## 3 - 500 Internal server error
+
+**Oppgave**: Lag endepunktet `/divide1000by/{tall}` som tar inn et tall og returnerer 1000 delt på tallet. Tving frem en exception du må håndtere ved å sende inn 0!
+
+<details>
+<summary>Hint 🕵️ 📜</summary>
+
+---
+Siden det å dele på 0 kaster en ArithmeticException må vi håndtere det med en try-catch. 
+Hvis det feiler kan vi returnere en internal server error med:
+```
+throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR)
+```
+---
 </details>

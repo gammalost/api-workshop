@@ -16,10 +16,11 @@ class UserRepository {
     @Autowired
     private lateinit var namedParameterJdbcTemplate: NamedParameterJdbcTemplate
 
-    fun getUsers(): List<User> = jdbcTemplate.query(
-        "SELECT * FROM USERS",
-        DataClassRowMapper(User::class.java),
-    )
+    fun getUsers(): List<User> =
+        jdbcTemplate.query(
+            "SELECT * FROM USERS",
+            DataClassRowMapper(User::class.java),
+        )
 
     fun getUser(id: String): User? {
         val params = params("ID" to id)
@@ -30,7 +31,10 @@ class UserRepository {
         ).firstOrNull()
     }
 
-    fun createUser(name: String, age: Int): Int {
+    fun createUser(
+        name: String,
+        age: Int,
+    ): Int {
         val params = params("NAME" to name, "AGE" to age)
         return namedParameterJdbcTemplate.update(
             "INSERT INTO USERS (NAME, AGE) values (:NAME, :AGE)",
@@ -38,10 +42,10 @@ class UserRepository {
         )
     }
 
-    fun deleteUser(name: String): Int {
-        val params = params("NAME" to name)
+    fun deleteUser(id: String): Int {
+        val params = params("ID" to id)
         return namedParameterJdbcTemplate.update(
-            "DELETE FROM USERS WHERE NAME=:NAME",
+            "DELETE FROM USERS WHERE ID=:ID",
             params,
         )
     }

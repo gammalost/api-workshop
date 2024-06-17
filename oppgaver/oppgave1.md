@@ -33,7 +33,7 @@ fra databasen.
 Ofte ønsker vi å ha mulighet til å hente en spesifikk bruker. Da må vi sende med informasjon om hvilken bruker vi ønsker.
 For å spesifisere dette kan vi bruke en path parameter i url-en, eks. hente vekommende med ansattnummer 1000: `bekk.no/ansatte/1000`
 
-**Oppgave**: Lag endepunktet `/user` og legg til mulighet for å spesifisere id-en til brukeren vi ønsker returnert med path parameteret `id`.
+**Oppgave**: Lag endepunktet `/users` og legg til mulighet for å spesifisere id-en til brukeren vi ønsker returnert med path parameteret `id`.
 
 Eksempel på kall: `http://localhost:8080/users/users/1`
 

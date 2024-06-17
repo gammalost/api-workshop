@@ -8,7 +8,7 @@ Vi skal se litt på noen av de mer vanlige, som er 2xx, 4xx og 5xx.
 
 ## 1 - 201 Created
 
-**Oppgave**: Endre på POST-endepunktet `/user` så det gir tilbake 201 Created i stedet for 200 OK når man legger til en bruker.
+**Oppgave**: Endre på POST-endepunktet `/users` så det gir tilbake 201 Created i stedet for 200 OK når man legger til en bruker.
 
 <details>
 <summary>Hint 🕵️ 📜</summary>

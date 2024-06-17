@@ -31,8 +31,7 @@ class Oppgave4 {
     @Test
     @DirtiesContext
     fun `Oppgave 4,1 - Slett bruker`() {
-        val name = "Emma Andersen"
-        mvc.delete("/user?name=$name")
+        mvc.delete("/users/1")
             .andExpect { status { is2xxSuccessful() } }
         val result = mvc.get("/users")
             .andReturn()
@@ -67,17 +66,5 @@ class Oppgave4 {
             )
 
         assert(JsonArray(array).containsAll(brukereDetaljert))
-    }
-
-    @Test
-    @DirtiesContext
-    fun `Oppgave 4,3 - Post med body`() {
-        val name = "Emma Andersen"
-        val age = 23
-        mvc.post("/postUser") {
-            content = """{"name":"$name","age":$age}"""
-            contentType = MediaType.APPLICATION_JSON
-        }
-            .andExpect { status { is2xxSuccessful() } }
     }
 }

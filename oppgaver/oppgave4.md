@@ -1,36 +1,42 @@
-# Oppgave 4 - Forretningslogikk
+# Videre
+Til nå har vi gått gjennom det vi oftes kommer over. Under følger litt diverse som bygger videre på det.
 
-Til nå har vi sett på endepunktene til webserveren, men ofte ønsker vi også å gjøre noe mer som et resultat av kallene som kommer inn.
-Dette kan være som vi i tidligere oppgaver har gjort med henting av data fra en database, men det kan også være flere databaser involvert, henting av data fra andre tjenester, sammenstilling av ulik informasjon som skal returneres osv.
-Dette er ofte hva som kalles forretningslogikk og noe som typisk legges inn i en service
+## 1 - Slett en bruker
 
-## 1 - Sortere brukere
+Det å kunne legge til og hente brukere tar oss et stykke, men vi mangler enda mulighet for å slette en bruker.
+For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE)-kall.
 
-Et veldig enkelt eksempel på logikk som gjerne legges i en service kan være å sortere data før den returneres.
+**Oppgave**: Lag endepunktet `/user` som tar inn navnet på brukeren med path parameteret `name` og slett brukeren.
 
-**Oppgave**: Her skal du endre på `UserService` slik at listen som blir returnert fra serveren er sortert etter alder.
+Eksempel på kall: `/user?name=Ola Nordmann`
 
-<details>
-<summary>Hint 🕵️ 📜</summary>
 
-Bruk [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
-for å sortere en liste.
-</details>
 
-## 2 - Hent brukere filtrert på alder
+## 2 - Returner nytt objekt med epost
 
-En generell tanke bak API-er er at de ikke returnerer mer data enn nødvendig.
-For å gjøre dette er det praktisk at vi har mulighet å sende med informasjon å filtrere på.
-Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte?skjorte=blå`.
+Det er ofte vi ønsker å ha en egen returtype, separert fra den interne datastrukturen i applikasjonen vår.
+I denne oppgaven skal vi lage en egen dataklasse som vi skal returnere til klienten.
 
-**Oppgave**: Utvid endepunktet `/users` til å kunne ta inn `alderFra` og `alderTil` og bruk dette til å filtrere brukere.
+**Oppgave**: Lag endepunktet `/usersDetailed` som returnerer det samme som `User`-klassen, men i tillegg et epost-felt som skal være på formen `Fornavn.Etternavn@bekk.no`.
 
-Eksempel på kall: `/users?alderFra=30&alderTil=50`
+Eksempel på returnert objekt:
+```json
+[
+  {
+    "id": 1,
+    "name": "Espen Askeladd",
+    "age": 20,
+    "email": "Espen.Askeladd@bekk.no"
+  }
+]
+```
 
-<details>
-<summary>Hint 🕵️ 📜</summary>
+## 3 - Bruk body ved post i stedet for query params
 
-Hvordan å gjøre query parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
+**Oppgave**: I oppgave 1.3 så lagde dere POST-endepunktet `/user` som tar inn `name` og `age` som request parametre.
+Vanligvis sender man med en request body i POST-spørringer i stedet for request params. Lag et endepunkt `/postUser` 
+som tar inn en dataklasse som innholder feltene `name` og `age` som request body.
 
-Eksempler på hvordan å filtrere en liste: https://kotlinlang.org/docs/collection-filtering.html
-</details>
+## 4 - Beskrivelse av feilen
+
+**Oppgave**: Legg til en bekskrivelse når det kastes en exception

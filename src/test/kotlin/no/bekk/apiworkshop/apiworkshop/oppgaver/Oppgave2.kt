@@ -33,4 +33,10 @@ class Oppgave2 {
         mvc.post("/user?name=$name&age=$age")
             .andExpect { status { isCreated() } }
     }
+
+    @Test
+    fun `Oppgave 2,2 - Gi 404 Not Found ved henting av brukere som ikke finnes`() {
+        mvc.get("/user/100")
+            .andExpect { status { isNotFound() } }
+    }
 }

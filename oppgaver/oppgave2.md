@@ -21,6 +21,9 @@ return ResponseEntity.status(HttpStatus.CREATED).body(id)
 
 </details>
 
+🧪 Når du er ferdig, kjør testene i `Oppgave2` og sjekk at testen `Oppgave 2,1` fungerer.
+
+
 ## 2 - 404 Ressurs ikke funnet
 
 Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksempler:

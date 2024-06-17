@@ -26,7 +26,8 @@ fra databasen.
 </details>
 
 
-🧪 Når du er ferdig, kjør testene i `Oppgave 1` og sjekk at testen `Oppgave 1,1` fungerer
+🧪 Når du er ferdig, kjør testene i `Oppgave1` og sjekk at testen `Oppgave 1,1` fungerer.
+
 
 ## 2 - Hent en spesifikk bruker
 
@@ -35,7 +36,7 @@ For å spesifisere dette kan vi bruke en path parameter i url-en, eks. hente vek
 
 **Oppgave**: Lag endepunktet `/users` og legg til mulighet for å spesifisere id-en til brukeren vi ønsker returnert med path parameteret `id`.
 
-Eksempel på kall: `http://localhost:8080/users/users/1`
+Eksempel på kall: `http://localhost:8080/users/1`
 
 <details>
 <summary>Hint 🕵️ 📜</summary>
@@ -69,8 +70,11 @@ I IntelliJ kan man bruke `.http`-filer for å sende forespørsler til serveren. 
 
 Lag en dataklasse som representerer dataen som skal sendes inn i POST-kallet.
 ```
-data class User(val name: String, val age: Int)
+data class UserDTO(val name: String, val age: Int)
 ```
+
+Når du har User-klassen på plass kan du bruke `@RequestBody` for å lese dataen som sendes inn i POST-kallet, på lik linje
+som du brukte `@PathVariable` for å lese path parametre.
 
 ---
 </details>

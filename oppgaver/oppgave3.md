@@ -1,23 +1,36 @@
-# Oppgave 3 - Exceptions
+# Oppgave 4 - Forretningslogikk
 
-Når noe går galt er det fint å si ifra om det til klienten. Her er noen eksempler:
-* 400 Bad Request - klienten har en ugyldig spørring, f.eks. har man kanskje ikke sendt med alle request params som er påkrevd
-* 404 Not Found - man gjør en spørring mot en URL som ikke finnes
-* 500 Internal Server Error - Noe uventet intreffet
+Til nå har vi sett på endepunktene til webserveren, men ofte ønsker vi også å gjøre noe mer som et resultat av kallene som kommer inn.
+Dette kan være som vi i tidligere oppgaver har gjort med henting av data fra en database, men det kan også være flere databaser involvert, henting av data fra andre tjenester, sammenstilling av ulik informasjon som skal returneres osv.
+Dette er ofte hva som kalles forretningslogikk og noe som typisk legges inn i en service
 
-## 1 - Ressurs ikke funnet
+## 1 - Sortere brukere
 
-**Oppgave**: Bruk `/users`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
-med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
+Et veldig enkelt eksempel på logikk som gjerne legges i en service kan være å sortere data før den returneres.
+
+**Oppgave**: Her skal du endre på `UserService` slik at listen som blir returnert fra serveren er sortert etter alder.
 
 <details>
 <summary>Hint 🕵️ 📜</summary>
 
-Det går an å kaste en feilmelding med ønsket HTTP status med følgende kode:
+Bruk [sortedBy](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html)
+for å sortere en liste.
+</details>
 
-```
-throw ResponseStatusException(HttpStatus.NOT_FOUND)
-```
+## 2 - Hent brukere filtrert på alder
 
-https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+En generell tanke bak API-er er at de ikke returnerer mer data enn nødvendig.
+For å gjøre dette er det praktisk at vi har mulighet å sende med informasjon å filtrere på.
+Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte?skjorte=blå`.
+
+**Oppgave**: Utvid endepunktet `/users` til å kunne ta inn `alderFra` og `alderTil` og bruk dette til å filtrere brukere.
+
+Eksempel på kall: `/users?alderFra=30&alderTil=50`
+
+<details>
+<summary>Hint 🕵️ 📜</summary>
+
+Hvordan å gjøre query parametre valgfrie: https://kotlinlang.org/docs/null-safety.html#nullable-types-and-non-null-types
+
+Eksempler på hvordan å filtrere en liste: https://kotlinlang.org/docs/collection-filtering.html
 </details>

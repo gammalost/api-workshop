@@ -5,7 +5,7 @@ Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkl
 
 ## Kom i gang
 
-Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 21. 
+Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 17. 
 Dette skal allerede være installert på maskinene deres, men mulig det trengs noe ekstra for noen (si fra!).
 
 1. Klon repoet. I terminalen kjør denne kommandoen:

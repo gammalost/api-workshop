@@ -27,6 +27,7 @@ For å gjøre dette er det praktisk at vi har mulighet å sende med informasjon 
 Her kommer gjerne query parametre inn i bildet, eks: `bekk.no/ansatte?skjorte=blå`.
 
 **Oppgave**: Utvid endepunktet `/users` til å kunne ta inn `alderFra` og `alderTil` og bruk dette til å filtrere brukere.
+Eksempelvis burde `alderFra=30` og `alderTil=40` gi tilbake alle brukere som er fra og med 30 og til og med 40 år gamle.
 
 Eksempel på kall: `/users?alderFra=30&alderTil=50`
 

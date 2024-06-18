@@ -26,7 +26,8 @@ fra databasen.
 </details>
 
 
-🧪 Når du er ferdig, kjør testene i `Oppgave1` og sjekk at testen `Oppgave 1,1` fungerer.
+🧪 Når du er ferdig, kjør testene i `Oppgave1` og sjekk at testen `Oppgave 1,1` fungerer. Før du er ferdig med oppgaven
+vil testene feile. Når du er ferdig med Oppgave 1,1 så burde testen for oppgaven være ok.
 
 
 ## 2 - Hent en spesifikk bruker

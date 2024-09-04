@@ -8,8 +8,6 @@ For å slette en bruker skal vi gjøre et [DELETE](https://developer.mozilla.org
 
 **Oppgave**: Lag endepunktet `/users/{userId}` som tar inn id-et på brukeren og sletter den.
 
-Eksempel på kall: `/users/1`. For å prøve API-et kan dere bruke filen [deleteUser.http](../http/deleteUser.http)
-
 🧪 Når du er ferdig, kjør testene i `Oppgave4` og sjekk at testen `Oppgave 4,1` fungerer.
 
 

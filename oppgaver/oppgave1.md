@@ -61,9 +61,6 @@ Les om hvordan man kan lese informasjon fra request body i [dokumentasjonen til 
 
 **Oppgave**: Lag endepunktet `/users` som tar inn `name` og `age` som request body som skal brukes til å opprette brukeren.
 
-I IntelliJ kan man bruke `.http`-filer for å sende forespørsler til serveren. For å prøve API-et kan dere bruke filen
-[createUser.http](../http/createUser.http). Trykk på play-knappen til venstre for rad 1 for å sende en forespørsel.
-
 <details>
 <summary>Hint 🕵️ 📜</summary>
 

@@ -1,6 +1,8 @@
 package no.bekk.apiworkshop.apiworkshop.oppgaver
 
 import no.bekk.apiworkshop.apiworkshop.ApiWorkshopApplication
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -32,29 +34,44 @@ class Oppgave2 {
             }.andExpect { status { isCreated() } }
     }
 
-    @Test
-    fun `Oppgave 2,2 - Gi 404 Not Found ved henting av brukere som ikke finnes`() {
-        mvc
-            .get("/users/1")
-            .andExpect { status { is2xxSuccessful() } }
-        mvc
-            .get("/users/100")
-            .andExpect { status { isNotFound() } }
+    @Nested
+    @DisplayName("Oppgave 2,2")
+    inner class Oppgave22 {
+        @Test
+        fun `Gi 404 Not Found ved henting av brukere som ikke finnes`() {
+            mvc
+                .get("/users/100")
+                .andExpect { status { isNotFound() } }
+        }
+
+        @Test
+        fun `Gi 2xxSuccessful ved henting av brukere som finnes`() {
+            mvc
+                .get("/users/1")
+                .andExpect { status { is2xxSuccessful() } }
+        }
     }
 
-    @Test
-    fun `Oppgave 2,3 - Returnerer svar eller kaster feil ved deling på null`() {
-        mvc
-            .get("/divide1000by/100")
-            .andExpect {
-                status { isOk() }
-                content { json("10") }
-            }
+    @Nested
+    @DisplayName("Oppgave 2,3")
+    inner class Oppgave23 {
+        @Test
+        fun `Returnerer svar ved deling på 100`() {
+            mvc
+                .get("/divide1000by/100")
+                .andExpect {
+                    status { isOk() }
+                    content { json("10") }
+                }
+        }
 
-        mvc
-            .get("/divide1000by/0")
-            .andExpect {
-                status { isInternalServerError() }
-            }
+        @Test
+        fun `Kaster feil ved deling på null`() {
+            mvc
+                .get("/divide1000by/0")
+                .andExpect {
+                    status { isInternalServerError() }
+                }
+        }
     }
 }

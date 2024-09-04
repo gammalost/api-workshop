@@ -36,6 +36,7 @@ class UserRepository {
         age: Int,
     ): Int {
         val params = params("NAME" to name, "AGE" to age)
+        // TODO: Gi tilbake ID på opprettet bruker i stedet for å altid gi tilbake 1 (antall rader påvirket)
         return namedParameterJdbcTemplate.update(
             "INSERT INTO USERS (NAME, AGE) values (:NAME, :AGE)",
             params,

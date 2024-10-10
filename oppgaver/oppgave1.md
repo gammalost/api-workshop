@@ -1,9 +1,7 @@
 # Oppgave 1 - HTTP-kall
 
-Det finnes flere forskjellige http-forespørsler med forskjellige funksjoner.
-Vi skal nå se nærmere på de vanligste og lage noen enkle API for hver av de.
-
-Beskrivelse av de ulike finner du her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+I denne oppgaven skal vi utforske hvordan vi kan lage enkle API-endepunkter ved hjelp av de vanligste HTTP-forespørsler.
+En oversikt over de ulike HTTP-forespørslene finner du på [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
 
 ## 1 - Hent alle brukere
 

@@ -62,6 +62,7 @@ Det er satt opp tre filer,
 [UserRepository](src/main/kotlin/no/bekk/apiworkshop/apiworkshop/repository/UserRepository.kt). 
 `UserController` og `UserService` er foreløpig tomme klasser - det er disse du skal legge til funksjonalitet i gjennom oppgavene. 
 For å gjøre det litt lettere er `UserRepository` satt opp på forhånd med de funksjonene du skal trenge for å hente data fra databasen.
+Du trenger ikke å gjøre noen endringer i `UserRepository`.
 
 
 <figure>
@@ -79,7 +80,20 @@ For en liten recap av presentasjonen så er:
 Databasen som er satt opp er en enkel in memory [H2](https://www.h2database.com/html/main.html)-database.
 For testene er denne denne fyllt med litt innhold. Akkurat hva kan du se i [data.sql](src/main/resources/data.sql).
 
+
+## Sjekk at alt fungerer
+
+Før vi begynner med oppgavene, sjekk at alt fungerer som det skal. Prøv å gjøre en endring å se at endringen blir reflektert i applikasjonen.
+
+Du kan f.eks. endre `helloWorld`-funksjonen i `UserController.kt` til å returnere noe annet enn `Hello world!` og se at endringen blir reflektert i applikasjonen.
+Merk at du må restarte applikasjonen for at endringene skal bli reflektert.
+
+Endre tilbake til `Hello world!` før du går videre, så du ikke får feil i testene.
+
 ## Oppgaver
+Vi har lagd denne workshoppen slik at du skal kunne kjøre et test for hver oppgave for å sjekke at du har gjort oppgaven riktig.
+Når du begynner på en oppgave så burde testene for den oppgaven feile, og når du har gjort oppgaven riktig så skal testene kjøre grønt.
+
 Under er en liste over oppgavene med tilhørende tema 
 
 * [Oppgave 1 - HTTP-kall](oppgaver/oppgave1.md)

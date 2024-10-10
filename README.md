@@ -5,8 +5,25 @@ Vi skal i denne workshopen se næmere på sistnevnte og sammen designe noen enkl
 
 ## Kom i gang
 
-Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy (alternativ til Maven for de som er kjent med det) og Java 17. 
-Dette skal allerede være installert på maskinene deres, men mulig det trengs noe ekstra for noen (si fra!).
+Vi skal bruke [Intellij](https://www.jetbrains.com/idea/) som IDE, [Gradle](https://gradle.org/) som byggverktøy og Java 17.
+
+### Intellij
+Intellij er en IDE (Integrated Development Environment) som er laget av JetBrains. Den er veldig populær blant Java-utviklere og har mange funksjoner som gjør det enklere å utvikle kode.
+
+Hvis dere ikke allerede har installert Intellij kan dere [laste det ned her](https://www.jetbrains.com/idea/download/).
+Velg community edition, som er gratis, hvis dere ikke har en lisens for ultimate edition.
+
+### Gradle
+
+Gradle er et byggverktøy som brukes til å bygge og kjøre prosjekter. 
+Det er et alternativ til Maven, som er et annet populært byggverktøy.
+Gradle blir installert av Intellij som en del av prosjektet, så det er ikke nødvendig å installere det separat.
+
+### Java 17
+
+Kotlin kjører på JVM (Java Virtual Machine), så vi trenger Java for å kjøre Kotlin-koden vår.
+
+### Kjøre prosjektet
 
 1. Klon repoet. I terminalen kjør denne kommandoen:
 ```
@@ -17,9 +34,12 @@ git clone git@github.com:gammalost/api-workshop.git
 <img src="./images/intellij_open_project.png" width="45%" /> <img src="images/intellij_choose_repo.png" width="45%" />
 
 3. Start applikasjonen og gå til `http://localhost:8080/hello` og sjekk at du får `Hello world!` tilbake  
-   (Nb: det kan ta litt tid for gradle å laste ned pakker som trengs for å kjøre applikasjonen). 
-   Hvis `ApiWorkshopApplication ` ikke vises kan du åpne filen `ApiWorkshopApplication.kt` 
-   og klikke på play-knappen til venstre for `fun main`.
+   * Nb: det kan ta litt tid for gradle å laste ned pakker som trengs for å kjøre applikasjonen. 
+   * Hvis `ApiWorkshopApplication ` ikke vises kan du åpne filen `ApiWorkshopApplication.kt` 
+      og klikke på play-knappen til venstre for `fun main`.
+   * Hvis dere ikke allerede har Java installert er det mulig å gjøre det via Intellij.
+     Velg `File` -> `Project Structure` -> `Project` -> `SDK` -> `Add SDK` -> `Download JDK` og velg versjon 17.
+     Hvis dette ikke fungerer, sjekk om det er en annen versjon av Java som er installert i terminalen (`java --version`) og endre denne til Java 17.
 
 <img src="images/intellij_start_application.png" width=300px />
 
@@ -29,6 +49,10 @@ git clone git@github.com:gammalost/api-workshop.git
 
 
 Et voilà! Om alt har gått knirkefritt så skal du nå være klar til å ta fatt på oppgavene! 🚀 Hvis ikke så rop ut, så kommer vi og hjelper! 🏃💨
+
+
+
+
 
 ## Okey... hva nå?
 

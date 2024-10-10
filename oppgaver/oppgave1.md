@@ -10,23 +10,9 @@ For denne oppgaven skal vi lage et API som returnerer alle brukerne fra database
 
 **Oppgave**: Lag endepunktet `/users` i `UserController.kt` og hent data fra databasen.
 
+Ta inspirasjon fra helloWorld-funksjonen! Gå til http://localhost:8080/users og sjekk hva du får tilbake. I `UserService.kt` kan du bruke `userRepository.getUsers()` for å hente informasjon fra databasen.
 
-<details>
-<summary>Hint 🕵️ 📜</summary>
-
----
-Ta inspirasjon fra helloWorld-funksjonen! Gå til http://localhost:8080/users og sjekk hva du får tilbake.
-
-
-Bruk `userRepository.getUsers()` i `UserService.kt` for å hente informasjon 
-fra databasen. 
----
-</details>
-
-
-🧪 Når du er ferdig, kjør testene i `Oppgave1` og sjekk at testen `Oppgave 1,1` fungerer. Før du er ferdig med oppgaven
-vil testene feile. Når du er ferdig med Oppgave 1,1 så burde testen for oppgaven være ok.
-
+🧪 Når du er ferdig, kjør testene i `Oppgave1` og sjekk at testen `Oppgave 1,1` kjører grønt.
 
 ## 2 - Hent en spesifikk bruker
 
@@ -35,16 +21,11 @@ For å spesifisere dette kan vi bruke en path parameter i url-en, eks. hente vek
 
 **Oppgave**: Lag endepunktet `/users` og legg til mulighet for å spesifisere id-en til brukeren vi ønsker returnert med path parameteret `id`.
 
-Eksempel på kall: `http://localhost:8080/users/1`
-
-<details>
-<summary>Hint 🕵️ 📜</summary>
-
----
 Les om hvordan path parametre fungerer her: https://www.baeldung.com/spring-pathvariable
 
----
-</details>
+Eksempel på kall: `http://localhost:8080/users/1`
+
+
 
 ## 3 - Legg til en bruker
 
@@ -58,6 +39,11 @@ Les om hvordan man kan lese informasjon fra request body i [dokumentasjonen til 
 
 
 **Oppgave**: Lag endepunktet `/users` som tar inn `name` og `age` som request body som skal brukes til å opprette brukeren.
+
+For å teste at dette kan du bruke [curl](https://curl.se/) i terminalen. Eksempel på post-kall der du sender med en body i json-format:
+```
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Ola Nordmann", "age": 30}' http://localhost:8080/users
+```
 
 <details>
 <summary>Hint 🕵️ 📜</summary>

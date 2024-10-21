@@ -32,4 +32,4 @@ Eksempel på returnert objekt:
 
 ## 3 - Beskrivelse av feilen
 
-**Oppgave**: Legg til en bekskrivelse når det kastes en exception
+**Oppgave**: Legg til en beskrivelse når det kastes en exception

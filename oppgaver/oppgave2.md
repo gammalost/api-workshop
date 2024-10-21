@@ -1,19 +1,18 @@
 # Oppgave 2 - HTTP statuser
 
 På lik linje med at det finnes flere forskjellige HTTP-kall så finnes det også forskjellige HTTP-statuser man kan få tilbake.
-Disse brukes for å gi mer informasjon om kallet, som om gikk bra eller noe feilet.
-Listen over statuskodene og hva de alle betyr kan du lese mer om her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+Disse brukes for å gi mer informasjon om kallet, f.eks. om det gikk bra eller noe feilet underveis.
 
 Vi skal se litt på noen av de mer vanlige, som er 2xx, 4xx og 5xx.
 
 ## 1 - 201 Created
 
+2xx koder viser til at forespørselen til serveren er vellykket, dvs at serveren har mottatt, klart å behandle og svart forespørselen. Du kan lese mer om 2xx her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses 
+
 **Oppgave**: Endre på POST-endepunktet `/users` så det gir tilbake 201 Created i stedet for 200 OK når man legger til en bruker.
 
 <details>
-<summary>Hint 🕵️ 📜</summary>
-
-Hvordan å returnere en spesifikk HTTP-status:
+<summary>Hvordan å returnere en spesifikk HTTP-status: 🕵️ 📜</summary>
 
 ```
 return ResponseEntity.status(HttpStatus.CREATED).body(id)
@@ -25,29 +24,33 @@ return ResponseEntity.status(HttpStatus.CREATED).body(id)
 
 
 ## 2 - 404 Not found
-Hvis klienten gjør noe feil er det greit å si fra om hva som er feil. Til dette har vi 4xx-kodene.
-Noen mye brukte koder er:
 
-* 400 Bad Request - klienten har en ugyldig spørring, f.eks. har man kanskje ikke sendt med alle request params som er påkrevd
-* 404 Not Found - man gjør en spørring mot en URL som ikke finnes
+* 4xx: Dette er feilkoder du får tilbake når det er noe feil i forespørselen. Det kan være at endepunktet ikke finnes, du forsøker å hente noe som ikke finnes, path-parametre mangler osv
+
+_Les mer om 4xx her https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses_
+
+
 
 **Oppgave**: Bruk `/user`-endepunktet fra [oppgave 1.2](#12-hent-en-spesifikk-bruker) og sørg for at endepunktet gir tilbake en respons
 med HTTP status "404 Not found" når man spør etter en bruker som ikke finnes.
 
 <details>
-<summary>Hint 🕵️ 📜</summary>
-
-Det går an å kaste en exception med ønsket HTTP status med følgende kode:
+<summary>Hvordan kaste exceptions: 🕵️ 📜</summary>
+Det går an å kaste en exception med en spesifikk HTTP status på denne måten:
 
 ```
 throw ResponseStatusException(HttpStatus.NOT_FOUND)
 ```
 
 https://www.baeldung.com/spring-response-status-exception#1-generate-responsestatusexception
+
 </details>
 
 ## 3 - 500 Internal server error
-Det kan også være at noe feiler med prosesseringen av requesten på serveren. Til dette har vi 5xx-kodene.
+
+* 5xx: Disse kodene indikerer at serveren av en eller annen grunn ikke kan behandle forespørselen. Dette kan være fordi serveren ikke klarer å koble til en database, kall mot andre tjenester (API etc) feilet, at applikasjonen krasjet e.l.
+
+_Les mer om 5xx her https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses_
 
 **Oppgave**: Lag endepunktet `/divide1000by/{tall}` som tar inn et tall og returnerer 1000 delt på tallet. Tving frem en exception du må håndtere ved å sende inn 0!
 

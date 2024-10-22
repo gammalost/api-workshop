@@ -6,7 +6,9 @@ En oversikt over de ulike HTTP-forespørslene finner du på [mdn web docs](https
 ## 1 - Hent alle brukere
 
 Vi har laget et database med brukere for denne workshopen. Innholdet i denne finner du i [data.sql](../src/main/resources/data.sql).
-For denne oppgaven skal vi lage et API som returnerer alle brukerne fra databasen. Siden vi ønsker å hente informasjon så skal vi bruke et [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)-kall.
+For denne oppgaven skal vi lage et API som returnerer alle brukerne fra databasen. Siden vi ønsker å hente informasjon så skal vi bruke et GET-kall.
+
+_Les mer om GET her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET_ 
 
 **Oppgave**: Lag endepunktet `/users` i `UserController.kt` og hent data fra databasen.
 
@@ -31,12 +33,12 @@ Eksempel på kall: `http://localhost:8080/users/1`
 
 Det å kun ha mulighet til å hente informasjon er en start, men det blir et lite dynamisk system.
 For å gjøre det mer brukbart skal du nå gjøre det mulig å legge til brukere.
-For dette skal vi bruke et [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)-kall.
+For dette skal vi bruke et POST-kall.
 
 I POST-kall blir vanligvis data sendt med i body-en til forespørselen. 
 Les om hvordan man kan lese informasjon fra request body i [dokumentasjonen til Spring](https://docs.spring.io/spring-framework/reference/web/webflux/controller/ann-methods/requestbody.html).
 
-
+_Les mer om POST her: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST_
 
 **Oppgave**: Lag endepunktet `/users` som tar inn `name` og `age` som request body som skal brukes til å opprette brukeren.
 
